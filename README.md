@@ -1,2 +1,3 @@
 # intro-csharp
-first lesson
+* first lesson
+second lesson
