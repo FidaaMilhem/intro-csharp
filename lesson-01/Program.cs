@@ -4,13 +4,13 @@
     {
         static void pprint(int[][] matrix)
         {
-            foreach(var row in matrix)
+            foreach (var row in matrix)
             {
                 Print(row);
             }
         }
         static void pprint(int[,] matrix)
-        {   
+        {
             Console.WriteLine("{");
             for (int i = 0; i < matrix.GetLength(0); i++)
             {
@@ -28,33 +28,31 @@
         }
 
 
-        //static int diagonals(int[,] matrix)
+        static int[] diagonals(int[,] matrix)
+        {
+            int m = matrix.GetLength(0);
+            int sumd1 = 0, dumd2 = 0;    // sum of diagonal
+            for (int i = 0; i < m; i++)
+            {
+                sumd1 += matrix[i, i];
+                dumd2 += matrix[i, m - 1 - i];
+            }
+            
+            int[]  diag = {sumd1,dumd2};
 
+            return diag;
+        }
 
-        //    for (int i = 0; i<n; i++)
-        //    {
-        //        sumd1 += matrix[i, i];
-        //        dumd2 += matrix[i, n - 1 - i];
-        //    }
 
     static bool ismagicsuare(int [ , ] matrix )
         {
             int n = matrix.GetLength(0);
 
-            //int[] diags = diagonals(...);
-            //if (duag[0] == diags[1])
-            int sumd1 = 0, dumd2 = 0;    // sum of diagonal 
-
-            for (int i = 0; i < n; i++)
+            int[] diags = diagonals(matrix);
+            if (diags[0] != diags[1])
             {
-                sumd1 += matrix[i, i];
-                dumd2 += matrix[i, n - 1 - i];
+                return false;
             }
-
-            if (sumd1 != dumd2)
-                {
-                    return false; 
-        }
                    
 
              
@@ -67,7 +65,7 @@
                     rowsum += matrix[i, j];
                     colsum += matrix[j, i];
                 }
-                if (rowsum != colsum || colsum != sumd1)
+                if (rowsum != colsum || colsum != diags[0])
                 {
                     return false;
                 }
@@ -207,22 +205,22 @@
             //(1, -4, -2)
             //(1, 6, 9)
 
-            int[,] matrix = new int[ , ]
-            {
-                { 1, 2, 3 },
-                { 4, 5, 6 },
-                { 7, 8 ,9 }
-            };
+            //int[,] matrix = new int[ , ]
+            //{
+            //    { 1, 2, 3 },
+            //    { 4, 5, 6 },
+            //    { 7, 8 ,9 }
+            //};
 
-            int[,] matrix2 = new int[,]
+            int[,] matrix = new int[,]
             {
                 { 2, 7, 6 },
                 { 9, 5, 1 },
                 { 4, 3 ,8 }
             };
 
-            
-            
+
+            pprint(matrix);
             if (ismagicsuare(matrix))
             {
                Console.WriteLine("magic square");
@@ -232,14 +230,7 @@
                 Console.WriteLine("not a magic square");
             }
 
-            if (ismagicsuare(matrix2))
-            {
-                Console.WriteLine("magic square");
-            }
-            else
-            {
-                Console.WriteLine("not a magic square");
-            }
+          
 
 
 
