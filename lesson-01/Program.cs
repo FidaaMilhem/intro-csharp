@@ -4,7 +4,7 @@
     {
 
 
-        static void print(double[] list)
+        static void Print(double[] list)
         {
             if (list is null)
             {
@@ -25,7 +25,7 @@
             }
             Console.WriteLine(" ]");
         }
-        static double sum(double[] lst)
+        static double Sum(double[] lst)
         {
             double s = 0.0;
             for (int i = 0; i < lst.Length; i++)
@@ -35,16 +35,30 @@
 
             return s;
         }
+        static double Avg(double[] list)
+        {  
+            return Sum(list) / list.Length ;
+        }
+
 
         static void Main(string[] args)
         {
           
             double[] numbers = { 1.1,3.0,5.2 };
+            //double[] numbers = {};
+            //double[] numbers = { 1.1, 3.0, -5.2 };
+
+
+            Print(numbers);
+
+            Console.WriteLine($"THE sum IS : {Sum(numbers)}");
+
+            if (numbers.Length > 0)
+            {
+                Console.WriteLine($"THE AVG IS : {Avg(numbers)}");
+            }
             
-
-            print(numbers);
-
-            Console.WriteLine(sum(numbers));
+            
 
 
 
