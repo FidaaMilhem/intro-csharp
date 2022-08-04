@@ -25,6 +25,17 @@
             }
             Console.WriteLine(" ]");
         }
+        static double sum(double[] lst)
+        {
+            double s = 0.0;
+            for (int i = 0; i < lst.Length; i++)
+            {
+                s += lst[i];
+            }
+
+            return s;
+        }
+
         static void Main(string[] args)
         {
           
@@ -32,7 +43,8 @@
             
 
             print(numbers);
-            
+
+            Console.WriteLine(sum(numbers));
 
 
 
