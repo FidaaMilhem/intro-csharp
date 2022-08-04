@@ -2,6 +2,82 @@
 {
     internal class Program
     {
+        static void pprint(int[][] matrix)
+        {
+            foreach(var row in matrix)
+            {
+                Print(row);
+            }
+        }
+        static void pprint(int[,] matrix)
+        {   
+            Console.WriteLine("{");
+            for (int i = 0; i < matrix.GetLength(0); i++)
+            {
+                if (matrix.GetLength(1) > 0)
+                {
+                    Console.Write($" [ {matrix[i, 0]}");
+                }
+                for (int j = 1; j < matrix.GetLength(1); j++)
+                {
+                    Console.Write($", {matrix[i, j]}");
+                }
+                Console.WriteLine(" ]");
+            }
+            Console.WriteLine("}");
+        }
+
+
+        //static int diagonals(int[,] matrix)
+
+
+        //    for (int i = 0; i<n; i++)
+        //    {
+        //        sumd1 += matrix[i, i];
+        //        dumd2 += matrix[i, n - 1 - i];
+        //    }
+
+    static bool ismagicsuare(int [ , ] matrix )
+        {
+            int n = matrix.GetLength(0);
+
+            //int[] diags = diagonals(...);
+            //if (duag[0] == diags[1])
+            int sumd1 = 0, dumd2 = 0;    // sum of diagonal 
+
+            for (int i = 0; i < n; i++)
+            {
+                sumd1 += matrix[i, i];
+                dumd2 += matrix[i, n - 1 - i];
+            }
+
+            if (sumd1 != dumd2)
+                {
+                    return false; 
+        }
+                   
+
+             
+            
+            for (int i = 0; i < n; i++)
+            {
+                int rowsum = 0, colsum = 0;
+                for (int j = 0; j < n; j++)
+                {
+                    rowsum += matrix[i, j];
+                    colsum += matrix[j, i];
+                }
+                if (rowsum != colsum || colsum != sumd1)
+                {
+                    return false;
+                }
+                   
+
+            }
+            return true;           
+        }
+        
+
 
 
         static void Print(double[] list)
@@ -25,7 +101,7 @@
             }
             Console.WriteLine(" ]");
         }
-        static void Print_2(int[] list)
+        static void Print(int[] list)
         {
             if (list is null)
             {
@@ -101,7 +177,7 @@
 
 
             Print(numbers);
-            Print_2(number2);
+            Print(number2);
 
             Console.WriteLine($"THE sum IS : {Sum(numbers)}");
 
@@ -131,6 +207,39 @@
             //(1, -4, -2)
             //(1, 6, 9)
 
+            int[,] matrix = new int[ , ]
+            {
+                { 1, 2, 3 },
+                { 4, 5, 6 },
+                { 7, 8 ,9 }
+            };
+
+            int[,] matrix2 = new int[,]
+            {
+                { 2, 7, 6 },
+                { 9, 5, 1 },
+                { 4, 3 ,8 }
+            };
+
+            
+            
+            if (ismagicsuare(matrix))
+            {
+               Console.WriteLine("magic square");
+            }
+            else
+            {
+                Console.WriteLine("not a magic square");
+            }
+
+            if (ismagicsuare(matrix2))
+            {
+                Console.WriteLine("magic square");
+            }
+            else
+            {
+                Console.WriteLine("not a magic square");
+            }
 
 
 
