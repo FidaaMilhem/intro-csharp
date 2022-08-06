@@ -2,8 +2,8 @@
 {
     internal class Program
     {
-            static void Print(int[,] board)
-            {
+        static void Print(int[,] board)
+        {
             char live = '#';
             char dead = '-';
 
@@ -23,80 +23,33 @@
                 }
                 Console.WriteLine();
                 }
-            }
-        static int[,] deadBoard(int h, int w)
-        {
-            int[,] B = new int[h, w];
-            for (int i = 1; i < h - 2; i++)
-            {
-                for (int j = 1; j < w - 2; j++)
-                {
-                    B[i, j] = 0;
-                }
-            }
-            return B;
         }
         
-        static int countlive(int[,] b, int i,int j)
+        static int countlive(int[,] board, int i,int j)
         {
             int count=0;
             for (int m = -1; m < 2; m++)
             {
-                for (int s = 0; s < 2; s++)
+                for (int s = -1; s < 2; s++)
                 {
-                    count = +b[i + k, j + l];
+                    count = count + board[i + m , j + s];
                 }
-                count = +b[i, j];
+                
             }
             return count;   
         }
-        static bool livecell(int[,] b, int i, int j)
+      
+        static bool livecell(int[,] border, int i, int j)
         {
-            return b[i, j] == 1;
+            return border[i, j] == 1;
         }
-        
-        static void Main(string[] args)
-            {
-                //bool endgame = false;
-            //    char[,] board =
-            //    {
-            //    {'-','-','-','-','-','-','-'},
-            //    {'-','-','+','+','-','-','+'},
-            //    {'-','+','-','-','+','-','-'},
-            //    {'+','-','+','+','-','-','+'},
-            //    {'-','-','-','+','-','-','-'},
-            //    {'-','-','-','+','-','-','-'},
-            //    {'-','-','+','-','+','-','-'},
-            //    {'+','+','-','-','+','-','+'},
-            //    {'-','-','-','-','-','-','-'},
-            //    {'-','-','+','-','-','-','-'},
-            //    {'-','-','-','+','-','-','-'},
-            //    {'-','-','-','-','-','+','-'},
-            //};
 
-            int[,] board =
-                {
-                {0, 1, 0, 0, 0, 1, 0, 0, 0},
-                {0, 0, 1, 1, 0, 0, 0, 0, 0},
-                {0, 0, 1, 1, 1, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 1, 0},
-                {0, 0, 0, 1, 0, 0, 0, 1, 0},
-                {0, 0, 0, 0, 1, 0, 0, 0, 0},
-                {0, 0, 1, 1, 0, 1, 0, 0, 1},
-                {0, 0, 0, 0, 1, 0, 0, 0, 0},
-                {0, 1, 0, 1, 0, 1, 1, 0, 0},
-                {0, 0, 1, 0, 1, 0, 0, 1, 1},
-                {0, 0, 1, 0, 1, 0, 1, 0, 1},
-                {1, 0, 0, 0, 0, 0, 0, 0, 0},
-            };
-
-
+       
+        static int [,] new_generation(int[,] board)
+        {
             int h = board.GetLength(0); // hight
             int w = board.GetLength(1); // weight
-            Console.WriteLine($"{h},{w}");
-            int[,] newboards = deadBoard(h, w);
-            Print(board);
-            Print(newboards);
+            int[,] b =  new int[h, w];
 
             for (int i = 1; i < h - 1; i++)
             {
@@ -105,29 +58,56 @@
                     int c = countlive(board, i, j);
                     if (livecell(board, i, j))
                     {
-                        if (c == 2 || c == 3)
+
+                        if ((c == 3) || (c == 4))
                         {
-                            newboards[i, j] = 1;
+                            b[i, j] = 1;
                         }
                         else
                         {
-                            if (c == 3)
-                            {
-                                newboards[i, j] = 1;
-                            }
+                            b[i, j] = 0;            
                         }
                     }
+                    else if (c == 3)
+                    {
+                        b[i, j] = 1;
+                    }
+                    else
+                    {
+                        b[i, j] = 0;
+                    }
                 }
-
-
-
-
-
-
-
-
-
             }
+            return b;    
+        }
+        
+        static void Main(string[] args)
+        {
+            int[,] board = {
+                {0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 1, 0, 0, 0, 1, 0, 0},
+                {0, 0, 1, 0, 0, 0, 0, 0, 0},
+                {0, 0, 1, 0, 0, 0, 0, 1, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 1, 0},
+                {0, 0, 1, 0, 0, 1, 0, 0, 0},
+                {0, 0, 0, 0, 1, 0, 0, 0, 0},
+                {0, 1, 0, 1, 0, 0, 1, 0, 0},
+                {0, 1, 0, 0, 1, 0, 0, 0, 0},
+                {0, 0, 1, 1, 1, 0, 0, 1, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0},
+
+            };
+
+                
+
+            for (int e = 0; e < 10; e++)
+            {
+                Print(board);
+                Console.WriteLine(" \n");
+                board = new_generation(board);
+            }
+        }
         
     }
 }
