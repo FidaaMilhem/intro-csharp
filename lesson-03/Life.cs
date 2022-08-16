@@ -80,17 +80,17 @@ namespace lesson_03
             return count;
         }
 
-        private void copy_matrix()
-        {
+        //private void copy_matrix()
+        //{
 
-            for (int i = 1; i < this.rows - 1; i++)
-            {
-                for (int j = 1; j < this.columns - 1; j++)
-                {
-                    matrix[i, j] = matrix_2[i, j];
-                }
-            }
-        }
+        //    for (int i = 1; i < this.rows - 1; i++)
+        //    {
+        //        for (int j = 1; j < this.columns - 1; j++)
+        //        {
+        //            matrix[i, j] = matrix_2[i, j];
+        //        }
+        //    }
+        //}
         public void next_generation()
         {
 
@@ -121,7 +121,8 @@ namespace lesson_03
                     }
                 }
             }
-         this.copy_matrix();
+            //this.copy_matrix();
+            matrix = matrix_2;
         }
 
     }
