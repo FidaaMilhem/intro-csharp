@@ -6,125 +6,108 @@ using System.Threading.Tasks;
 
 namespace lesson_03
 {
-    internal class Life
-    {
-        private int rows;
-        private int columns;
-        private cellstate[ , ]  matrix_2;
-        public cellstate[ , ] matrix;
+    public class GameOfLife
+    {       
+        private const char LIVE_CHAR = '#';
+        private const char DEAD_CAHR = '-';
 
-
-        public  Life(int rows, int columns)
+        private CellState[,] _matrix;
+       
+        public  GameOfLife(int rows, int columns)
         {
-            this.rows = rows + 2;
-            this.columns = columns + 2;
-            Console.WriteLine();
-            matrix = new cellstate[this.rows, this.columns];
-            matrix_2 = new cellstate[this.rows, this.columns];
-          
-
+            rows += 2;
+            columns += 2;
+            _matrix = new CellState[rows, columns];            
         }
 
         
-        public void turnon(int i, int j)
+        public void TurnOn(int i, int j)
         {
-            this.matrix[i, j] = cellstate.IsAlive;
+            _matrix[i, j] = CellState.IsAlive;
         }
 
-        public void turnoff(int i, int j)
-        {
-            this.matrix[i, j] = cellstate.IsDead;
-        }
+        public void TurnOff(int i, int j) => _matrix[i, j] = CellState.IsDead;
+        
+        public bool IsAlive(int i, int j) => _matrix[i, j] == CellState.IsAlive;        
 
-        public bool livecell(int i, int j)
-        {
-            return this.matrix[i, j] == cellstate.IsAlive;
-        }
-        public bool deadcell(int i, int j)
-        {
-            return this.matrix[i, j] == cellstate.IsDead;
-        }
-        public void print()
-        {
-            char live = '#';
-            char dead = '-';
+        public bool IsDead(int i, int j) =>  !IsAlive(i, j);
 
-            for (int i = 1; i < this.rows -1 ; i++)
+        
+        public override string ToString()
+        {            
+            int rows = _matrix.GetLength(0);
+            int columns = _matrix.GetLength(1);
+
+            
+            var sb = new StringBuilder();            
+            for (int i = 1; i < rows - 1; i++)
             {
-                for (int j = 1; j < this.columns -1  ; j++)
+                for (int j = 1; j < columns - 1; j++)
                 {
-                    if (this.livecell(i,j))
+                    if (IsAlive(i, j))
                     {
-                        Console.Write(live);
+                        sb.Append(LIVE_CHAR);
                     }
                     else
                     {
-                        Console.Write(dead);
+                        sb.Append(DEAD_CAHR);
                     }
-
                 }
-                Console.WriteLine();
+                sb.AppendLine();
             }
-
+            
+            return sb.ToString();
         }
-        private int countlive(int i, int j)
+       
+        private int aliveNeighbours(int i, int j)
         {
             int count = 0;
             for (int m = -1; m < 2; m++)
             {
                 for (int s = -1; s < 2; s++)
                 {
-                    count = count + (int)this.matrix[i + m, j + s];
+                    count += (int)_matrix[i + m, j + s];
                 }
             }
-            return count;
+
+            return count; // - (int)matrix[i, j];
         }
-
-        //private void copy_matrix()
-        //{
-
-        //    for (int i = 1; i < this.rows - 1; i++)
-        //    {
-        //        for (int j = 1; j < this.columns - 1; j++)
-        //        {
-        //            matrix[i, j] = matrix_2[i, j];
-        //        }
-        //    }
-        //}
-        public void next_generation()
+      
+        public void ComputeNextGeneration()
         {
-
-            for (int i = 1; i < this.rows - 1; i++)
+            int rows = _matrix.GetLength(0);
+            int columns = _matrix.GetLength(1);
+            var next_gen = new CellState[rows, columns];  
+            
+            for (int i = 1; i < rows - 1; i++)
             {
-                for (int j = 1; j < this.columns - 1; j++)
+                for (int j = 1; j < columns - 1; j++)
                 {
-                    int c = this.countlive( i, j);
-                    if (this.livecell(i,j))
+                    int c = aliveNeighbours( i, j);
+                    if (IsAlive(i,j))
                     {
-
                         if ((c == 3) || (c == 4))
                         {
-                            this.matrix_2[i, j] = cellstate.IsAlive;  
+                            next_gen[i, j] = CellState.IsAlive;  
                         }
                         else
                         {
-                            this.matrix_2[i, j] = cellstate.IsDead;
+                            next_gen[i, j] = CellState.IsDead;
                         }
                     }
                     else if (c == 3)
                     {
-                        this.matrix_2[i, j] = cellstate.IsAlive;
+                        next_gen[i, j] = CellState.IsAlive;
                     }
                     else
                     {
-                        this.matrix_2[i, j] = cellstate.IsDead;
+                        next_gen[i, j] = CellState.IsDead;
                     }
                 }
-            }
-            //this.copy_matrix();
-            matrix = matrix_2;
+            }        
+        
+            _matrix = next_gen;
         }
-
     }
 
 }

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 namespace lesson_03
 {
-    internal enum cellstate
+    internal enum CellState
     {
         IsDead = 0,
         IsAlive = 1
