@@ -5,10 +5,10 @@
         static void Main(string[] args)
         {
             var book = new Book();
-            stud1 = new Book()
+            var b2 = new Book()
             {
-
-            }
+                Title = "Harry Potter"
+            };
             
 
         }
