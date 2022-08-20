@@ -43,6 +43,16 @@
             {
                 Console.WriteLine("Not Found");
             }
+            Console.WriteLine("----------------------------");
+            var a = c.FindByAuthor("Dan");
+            if (a.Item1)
+            {
+                Console.WriteLine($" fffffff dan {a.Item2}");
+            }
+            else
+            {
+                Console.WriteLine("Not Found");
+            }
 
             Console.WriteLine("----------------------------");
             var (found, book) = c.FindByIsbn("0013");
@@ -57,23 +67,36 @@
 
             Console.WriteLine("----------------------------");
 
-            var title = "Jedi Secret Manual";
-            var lst = c.FindByTitle(title);
-            Console.WriteLine($"found {lst.Count} books with title {title}");
-            foreach (var item in lst)
-            {
-                Console.WriteLine(item);
-            }
+            //var title = "Jedi Secret Manual";
+            //var lst = c.FindByTitle(title);
+            //Console.WriteLine($"found {lst.Count} books with title {title}");
+            //foreach (var item in lst)
+            //{
+            //    Console.WriteLine(item);
+            //}
 
             Console.WriteLine("----------------------------");
-            lst = c.FindByTitleContains("Jedi");
+            var T = c.FindByTitle("Jedi Secret Manual");
+            if (T.Item1)
+            {
+                Console.WriteLine($"ttttt {T.Item2}");
+            }
+            else
+            {
+                Console.WriteLine("Not Found");
+            }
+            Console.WriteLine("----------------------------");
+
+            Console.WriteLine("----------------------------");
+            var lst = c.FindByTitleContains("Jedi");
             Console.WriteLine($"found {lst.Count} books containing Jedi");
             foreach (var item in lst)
             {
                 Console.WriteLine(item);
             }
 
-            Console.WriteLine("end");
+            /*var notFound = c.FindByIsbn("0777");
+             Console.WriteLine(notFound);*/
         }
     }
 }
