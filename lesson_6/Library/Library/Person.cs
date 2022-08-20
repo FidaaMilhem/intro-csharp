@@ -6,6 +6,5 @@ using System.Threading.Tasks;
 
 namespace Library
 {
-    public record Book(string Title, string Isbn, List<Person> Authors, int Copies) { }
-    
+    public record Person(string FirstName, string LastName, string Id, string Email);
 }
