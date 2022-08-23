@@ -16,13 +16,14 @@ namespace Library
 
         public void Add(Book book)
         {
-            _catalogIsbn.Add(book.Isbn, book);
-            foreach (Person per in book.Authors)
+            if (TryAdd(book))
             {
-                _catalogAuthor.Add(per.FirstName, book);
+                foreach (Person per in book.Authors)
+                {
+                    _catalogAuthor.Add(per.FirstName, book);
+                }
+                _catalogTitle.Add(book.Title, book);                
             }
-            _catalogTitle.Add(book.Title, book);
-            //_catalog[book.Isbn] = book;
         }
 
   
