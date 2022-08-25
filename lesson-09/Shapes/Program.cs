@@ -21,42 +21,47 @@
                 PaintPrice(shape);
             }
         }
-        static void Paint_dic(Dictionary<string, List<AbstractShape>> d)
+        static void Paint(Dictionary<string, List<AbstractShape>> d)
         {
+            Console.WriteLine("full catalog  -------------------------");
             foreach (var item in d.Keys)
             {
+                Console.WriteLine($"{item} -------------------------");
+                Paint(d[item]);
+                /*
                 foreach (var obj in d[item])
                 {
                     Console.WriteLine($"a {obj.Name} with an area {obj.Area()}");
-                }
-                    
+                }        */
             }
         }
 
-        static void Blow(List<AbstractShape> lst)
+        static void Blow(List<AbstractShape> lst, double factor = 2.5)
         {
             foreach(var shape in lst)
             {
-                shape.ScaleArea(2.5);
+                shape.ScaleArea(factor);
             }
         }
 
-        static Dictionary<string, List<AbstractShape>> CreatDictionaryShape(List<AbstractShape> lst)
+        static Dictionary<string, List<AbstractShape>> CreatDictionaryOfShapes(List<AbstractShape> lst)
         {
-            Dictionary<string, List<AbstractShape>> c = new();
+            Dictionary<string, List<AbstractShape>> catalog = new();
 
             foreach (var shape in lst)
             {
                 string k = shape.Name;
-                if (c.ContainsKey(k)) { c[k].Add(shape); }
+                if (catalog.ContainsKey(k)) 
+                { 
+                    catalog[k].Add(shape); 
+                }
                 else 
                 {
-                  c.Add(k, new List<AbstractShape>() { shape });
-                }
-                
+                  catalog.Add(k, new List<AbstractShape>() { shape });
+                }                
             }
-        return c;
-
+        
+            return catalog;
         }
 
         static void Main(string[] args)
@@ -73,21 +78,25 @@
             var K = new Sphere(4);
             PaintPrice(K);
 
-            Console.WriteLine("-------------------------");
-            var shapes = new List<AbstractShape>() { new Circle(3), new Circle(4), new Circle(5), new Square(4), new Sphere(5), new Ring(3, 7) };
+            Console.WriteLine("list paint -------------------------");
+            var shapes = new List<AbstractShape>() { 
+                new Circle(3), new Circle(4), new Circle(5), new Square(4), new Sphere(5), new Ring(3, 7) 
+            };
+
             Paint(shapes);
 
 
-            Console.WriteLine("-------------------------");
-            Blow(shapes);
+            Console.WriteLine("blow and paint -------------------------");
+            Blow(shapes, 2);
             Paint(shapes);
 
          
 
-            Console.WriteLine("-------------------------");
-            Dictionary<string, List<AbstractShape>> D2=CreatDictionaryShape(shapes);
-            Paint_dic(D2);
+            Console.WriteLine("dict -------------------------");
+            Dictionary<string, List<AbstractShape>> dict = CreatDictionaryOfShapes(shapes);
+            Paint(dict["Circlular Shape"]);
 
+            Paint(dict);
         }
     }
 }
