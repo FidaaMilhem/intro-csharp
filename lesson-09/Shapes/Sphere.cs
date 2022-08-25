@@ -6,22 +6,22 @@ using System.Threading.Tasks;
 
 namespace Shapes
 {
-    public class Circle : AbstractShape
+    public class Sphere : AbstractShape
     {
         private double _radius;
-
-        public Circle(double radius)
+        public Sphere(double radius)
         {
             _radius = radius;
         }
 
-        public override string Name => "Circlular Shape";
+        public override string Name => "Sphere Shape";
 
-        public override string Dimension => "2D";
+        public override string Dimension => "3D";
 
         public override double Area()
         {
-            return Math.PI * _radius * _radius;            
+            var R  = new Circle(_radius);
+            return 4*R.Area();
         }
 
         public override void ScaleArea(double factor)

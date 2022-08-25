@@ -16,10 +16,16 @@ namespace Shapes
         }
 
         public override string Name => "SquarePants";
+        public override string Dimension => "2D";
 
         public override double Area()
         {
             return _side * _side;
+        }
+
+        public override void ScaleArea(double factor)
+        {
+            _side = _side*factor;
         }
     }
 }
