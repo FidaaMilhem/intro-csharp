@@ -21,7 +21,7 @@
                 PaintPrice(shape);
             }
         }
-        static void Paint(Dictionary<string, List<AbstractShape>> d)
+        static void Paint_dict(Dictionary<string, List<AbstractShape>> d)
         {
             Console.WriteLine("full catalog  -------------------------");
             foreach (var item in d.Keys)
@@ -92,9 +92,9 @@
 
          
 
-            Console.WriteLine("dict -------------------------");
-            Dictionary<string, List<AbstractShape>> dict = CreatDictionaryOfShapes(shapes);
-            Paint(dict["Circlular Shape"]);
+            Console.WriteLine("-------------------------");
+            Dictionary<string, List<AbstractShape>> D2=CreatDictionaryShape(shapes);
+            Paint_dict(D2);
 
             Paint(dict);
         }
