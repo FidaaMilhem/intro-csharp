@@ -93,10 +93,10 @@
          
 
             Console.WriteLine("-------------------------");
-            Dictionary<string, List<AbstractShape>> D2=CreatDictionaryShape(shapes);
-            Paint_dict(D2);
+            Dictionary<string, List<AbstractShape>> dict= CreatDictionaryOfShapes(shapes);
+            Paint_dict(dict);
 
-            Paint(dict);
+            Paint(dict["Circlular Shape"]);
         }
     }
 }
