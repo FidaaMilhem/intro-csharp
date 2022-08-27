@@ -9,39 +9,36 @@ namespace lesson_10
     internal class SortedNumbersArray : SortedNumbers
     {
 
-        private int[] _array { get; set; }
-        private int _lenght = 0;    
-        public SortedNumbersArray(int l)
+        private int[] _array;
+        private int _count = 0;    
+        public SortedNumbersArray(int capacity)
         {
-            _array = new int[l];
-            
+            _array = new int[capacity];
         }
 
         public bool Add(int x)
-        {
-            int index = 0;
-            if (_lenght < _array.Length)
-            {
-                index = _lenght;
-                while ((index > 0) && (_array[index - 1] > x))
-                {
-                    _array[index] = _array[index - 1]; ;
-                    _lenght--;
-                }
-                _array[index] = x;
-                _lenght++;
-                return true;
-            }
-            else
+        {            
+            if (_count >= _array.Length)
             {
                 return false;
             }
-       
+
+            int index = _count;
+            while ((index > 0) && (_array[index - 1] > x))
+            {
+                _array[index] = _array[index - 1];
+                index--;
+            }
+
+            _array[index] = x;
+            _count++;
+            
+            return true;
         }
 
         public int Count()
         {
-            return _lenght;
+            return _count;
         }
 
         public int Get(int index)
@@ -51,7 +48,7 @@ namespace lesson_10
 
         public int Max()
         {
-            return _array[_lenght-1];
+            return _array[_count-1];
         }
 
         public int Min()
@@ -61,28 +58,39 @@ namespace lesson_10
 
         public bool Remove(int x)
         {
-            bool r = false;
-            int loc = -1;    
-            for (int i = 0; i < _array.Length; i++)
+            int loc = find(x);
+
+            if (loc == -1)
+            {
+                return false;
+            }
+
+            shift(loc, 1);
+            _count--;
+
+            return true;
+
+        }
+
+        private void shift(int loc, int direction)
+        {
+            for (int j = loc; j < _count; j++)
+            {
+                _array[j] = _array[j + direction];
+            }
+        }
+
+        private int find(int x)
+        {
+            for (int i = 0; i < _count; i++)
             {
                 if (x == _array[i])
                 {
-                    loc = i;
-                    r = true;
-                    break;
+                    return i;
                 }
+            }
 
-            }
-            if (loc != -1)
-            {
-                for (int j = loc  ; j < _lenght; j++)
-                {
-                    _array[j] = _array[j + 1];
-                }
-                _lenght--;
-            }
-            return r;
-        
+            return -1;
         }
     }
 }

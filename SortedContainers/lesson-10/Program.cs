@@ -15,13 +15,11 @@
         static void Fill(SortedNumbers sn, int n)
         {
             Random random = new Random();
-            int x;
-            for (x = 0; x < n-1 ; x++)
+            for (int i = 0; i < n; i++)
             {
-                x= random.Next(1,9);
+                var x = random.Next();
                 sn.Add(x);
-            }
-            Print(sn);
+            }            
         }
 
 
@@ -43,25 +41,27 @@
             snl.Remove(4);
             Print(snl);
             Console.WriteLine("___fill_______________");
+            Fill(snl, 4);
+            Print(snl);
+            Console.WriteLine("___fill_______________");
             Fill(snl, 10);
+            Print(snl);
 
-            Console.WriteLine("_array_________________");
+            Console.WriteLine("\n\n_array_________________");
             int l = 10;
-            var sna = new SortedNumbersArray(l,10);
+            var sna = new SortedNumbersArray(10);
             sna.Add(8);
             sna.Add(10);
             sna.Add(2);
+            sna.Add(5);
             Print(sna);
+
             Console.WriteLine("______remove______________");
             sna.Remove(8);
             Print(sna);
             Console.WriteLine("____fill______________");
             Fill(sna, 10);
-
-
-
-
-            Console.WriteLine("Hello, World!");
+            Print(sna);
         }
     }
 }

@@ -14,16 +14,31 @@ namespace lesson_10
             _listnumber = new List<int>();    
         }
         public bool Add(int x)
-        {
-            int index = 0;
-            while ((index < _listnumber.Count) && (_listnumber[index] < x))
-            {
-                index++;
-            }
-                    
-            _listnumber.Insert(index,x);
+        {            
+            var index = FindPlace(x);
+            _listnumber.Insert(index, x);
             return true;
-            
+        }
+
+        private int FindPlace(int x)
+        {
+            for (int i = 0; i < _listnumber.Count; i++)
+            {
+                if (x >= _listnumber[i])
+                {
+                    return i;
+                }
+            }
+
+            return _listnumber.Count;
+
+            //var index = 0;
+            //while ((index < _listnumber.Count) && (_listnumber[index] < x))
+            //{
+            //    index++;
+            //}
+
+            //return index;
         }
 
         public int Count()
@@ -46,11 +61,9 @@ namespace lesson_10
             return _listnumber.Min();
         }
 
-        public bool  Remove(int x)
+        public bool Remove(int x)
         {
-            int index=0;    
-            _listnumber.Remove(x);
-            return index > _listnumber.Count;
+            return _listnumber.Remove(x);
         }
     }
 }
