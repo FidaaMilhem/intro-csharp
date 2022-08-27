@@ -29,17 +29,7 @@
         static void Main(string[] args)
         {
 
-            Console.WriteLine("_array_________________");
-            var sna = new SortedNumbersArray();
-            sna.Add(8);
-            sna.Add(10);
-            sna.Add(2);
-            Print(sna);
-            Console.WriteLine("______remove______________");
-            sna.Remove(8);
-            Print(sna);
-            Console.WriteLine("____fill______________");
-            Fill(sna, 10);
+            
 
             Console.WriteLine("__list______________________");
 
@@ -54,6 +44,19 @@
             Print(snl);
             Console.WriteLine("___fill_______________");
             Fill(snl, 10);
+
+            Console.WriteLine("_array_________________");
+            int l = 10;
+            var sna = new SortedNumbersArray(l,10);
+            sna.Add(8);
+            sna.Add(10);
+            sna.Add(2);
+            Print(sna);
+            Console.WriteLine("______remove______________");
+            sna.Remove(8);
+            Print(sna);
+            Console.WriteLine("____fill______________");
+            Fill(sna, 10);
 
 
 

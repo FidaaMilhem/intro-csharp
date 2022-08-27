@@ -11,9 +11,10 @@ namespace lesson_10
 
         private int[] _array { get; set; }
         private int _lenght = 0;    
-        public SortedNumbersArray()
+        public SortedNumbersArray(int l)
         {
-            _array = new int[100];
+            _array = new int[l];
+            
         }
 
         public bool Add(int x)
