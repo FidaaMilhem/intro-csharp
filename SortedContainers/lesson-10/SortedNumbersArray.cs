@@ -16,24 +16,69 @@ namespace lesson_10
             _array = new int[capacity];
         }
 
+        //public bool Add(int x)
+        //{            
+        //    if (_count >= _array.Length)
+        //    {
+        //        return false;
+        //    }
+
+        //    int index = _count;
+        //    while ((index > 0) && (_array[index - 1] > x))
+        //    {
+        //        _array[index] = _array[index - 1];
+        //        index--;
+        //    }
+
+        //    _array[index] = x;
+        //    _count++;
+
+        //    return true;
+        //}
+
         public bool Add(int x)
-        {            
-            if (_count >= _array.Length)
-            {
-                return false;
-            }
-
-            int index = _count;
-            while ((index > 0) && (_array[index - 1] > x))
-            {
-                _array[index] = _array[index - 1];
-                index--;
-            }
-
+        {
+            int befor = Count();
+            var index = FindPlace(x);
             _array[index] = x;
-            _count++;
-            
-            return true;
+            return Count() > befor;
+        }
+        private int FindPlace(int x)
+        {
+            if (Count() == 0)
+            {
+                return Count();
+            }
+            int left = 0;
+            int right = Count() - 1;
+
+            if (x < Get(left))
+            {
+                return left;
+            }
+            if (x > Get(right))
+            {
+                return right + 1;
+            }
+
+            while (left <= right)
+            {
+                int mid = (left + right) / 2;
+                var element = Get(mid);
+                if (x > element)
+                {
+                    left = mid + 1;
+                }
+                else if (x < element)
+                {
+                    right = mid - 1;
+                }
+                else
+                {
+                    return mid;
+                }
+            }
+            return Count();
         }
 
         public int Count()

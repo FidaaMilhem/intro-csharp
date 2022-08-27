@@ -8,29 +8,69 @@ namespace lesson_10
 {
     public class SortedNumbersList : SortedNumbers
     {
-        private List<int> _listnumber { get; set; }
+        private List<int> _listnumber;
         public SortedNumbersList()
         {
             _listnumber = new List<int>();    
         }
         public bool Add(int x)
-        {            
+        {
+            int befor = Count();
             var index = FindPlace(x);
             _listnumber.Insert(index, x);
-            return true;
+            return Count() > befor;
         }
 
         private int FindPlace(int x)
         {
-            for (int i = 0; i < _listnumber.Count; i++)
+
+            if (Count()==0)
             {
-                if (x >= _listnumber[i])
+                return Count();
+            }
+
+            int left = 0;
+            int right = Count() - 1;
+
+            if (x < Get(left))
+            {
+                return left;
+            }
+            if ( x > Get(right))
+            {
+                return right + 1;
+            }
+
+            int mid = -1;
+            while (left <= right)
+            {
+                mid = (left+right)/2 ;
+                var element = Get(mid);
+                if (x > element)
                 {
-                    return i;
+                    left = mid+1;
+                }
+                else if(x < element)
+                {
+                    right = mid-1;
+                }
+                else
+                {
+                    return mid + 1;
                 }
             }
 
-            return _listnumber.Count;
+            return mid + 1;
+
+            //for (int i = 0; i < _listnumber.Count; i++)
+            //{
+            //    if (x <= _listnumber[i])
+            //    {
+            //        return i;
+            //    }
+            //}
+
+            //return _listnumber.Count;
 
             //var index = 0;
             //while ((index < _listnumber.Count) && (_listnumber[index] < x))

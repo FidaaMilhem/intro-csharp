@@ -17,7 +17,7 @@
             Random random = new Random();
             for (int i = 0; i < n; i++)
             {
-                var x = random.Next();
+                var x = random.Next(1, 20);
                 sn.Add(x);
             }            
         }
@@ -36,12 +36,15 @@
             snl.Add(8);
             snl.Add(10);
             snl.Add(2);
+            snl.Add(6);
+            snl.Add(5);
+            snl.Add(9);
             Print(snl);
             Console.WriteLine("__remove________________");
             snl.Remove(4);
             Print(snl);
             Console.WriteLine("___fill_______________");
-            Fill(snl, 4);
+            Fill(snl, 10);
             Print(snl);
             Console.WriteLine("___fill_______________");
             Fill(snl, 10);
