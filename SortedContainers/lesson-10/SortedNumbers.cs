@@ -15,5 +15,6 @@ namespace lesson_10
         bool Remove(int x); // bool
         int Get(int index);
         //int sn[int x];
+       // int Findplace(int x );
     }
 }

@@ -9,9 +9,11 @@ namespace lesson_10
     public class SortedNumbersList : SortedNumbers
     {
         private List<int> _listnumber;
-        public SortedNumbersList()
+        private bool _ascending = true;
+        public SortedNumbersList(bool ascending)
         {
-            _listnumber = new List<int>();    
+            _listnumber = new List<int>();
+            _ascending = ascending;
         }
         public bool Add(int x)
         {
@@ -20,6 +22,15 @@ namespace lesson_10
             _listnumber.Insert(index, x);
             return Count() > befor;
         }
+
+        private bool Order(int x, int y)
+        {
+            if (!_ascending) return x < y;
+            else return x > y;
+        }
+
+
+
 
         private int FindPlace(int x)
         {
@@ -36,15 +47,47 @@ namespace lesson_10
             {
                 return left;
             }
-            if ( x > Get(right))
+            if (x > Get(right))
             {
                 return right + 1;
             }
 
-            int mid = -1;
-            while (left <= right)
+            //if ((x < _listnumber[left]) && (_ascending = true))
+            //{
+            //    return left;
+            //}
+            //if ((x > _listnumber[right]) && (_ascending = true))
+            //{
+            //    return right + 1;
+            //}
+
+            //if ((x > _listnumber[left]) && (_ascending = false))
+            //{
+            //    return left;
+            //}
+            //if ((x <= _listnumber[right]) && (_ascending = false))
+            //{
+            //    return right +1 ;
+            //}
+
+            //if (Order(x , _listnumber[right]))
+            //{
+            //    return right + 1;
+            //}
+            //if (Order(x , _listnumber[left]))
+            //{
+            //    return left;
+            //}
+
+
+
+            //if (Order(_listnumber[left] , x )) return left;
+            //if (Order(_listnumber[right] , x)) return right +1 ;
+
+
+            int mid = (left + right) / 2; ;
+            while (left < right)
             {
-                mid = (left+right)/2 ;
                 var element = Get(mid);
                 if (x > element)
                 {
@@ -52,15 +95,16 @@ namespace lesson_10
                 }
                 else if(x < element)
                 {
-                    right = mid-1;
+                    right = mid;
                 }
                 else
                 {
-                    return mid + 1;
+                    return mid;
                 }
+                mid = (left + right) / 2;
             }
 
-            return mid + 1;
+            return mid;
 
             //for (int i = 0; i < _listnumber.Count; i++)
             //{
@@ -88,7 +132,10 @@ namespace lesson_10
 
         public  int Get(int index)
         {
-            return _listnumber[index];
+            int n = index;
+            if (!_ascending) n = Count() -1- index;
+          
+            return _listnumber[n];
         }
 
         public int Max()
@@ -105,5 +152,12 @@ namespace lesson_10
         {
             return _listnumber.Remove(x);
         }
+
+        //public override int FindPlace(this int x)
+        //{
+        //    return Find.FindPlace(this);
+        //}
+
+
     }
 }

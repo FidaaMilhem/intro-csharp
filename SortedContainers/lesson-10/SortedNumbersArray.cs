@@ -36,11 +36,26 @@ namespace lesson_10
         //    return true;
         //}
 
+        public int ShiftRight(int index,int x)
+        {
+            int c = Count();
+            while ((index < c) && (_array[c - 1] > x))
+            {
+                _array[c] = _array[c - 1];
+                c--;
+            }
+            return c;
+
+        }
         public bool Add(int x)
         {
             int befor = Count();
             var index = FindPlace(x);
-            _array[index] = x;
+            
+            //Console.WriteLine($" index = {index} , c = { c } x= {x}");
+            int c =ShiftRight(index,x);
+            _array[c] = x;
+            _count++;
             return Count() > befor;
         }
         private int FindPlace(int x)
@@ -49,6 +64,7 @@ namespace lesson_10
             {
                 return Count();
             }
+
             int left = 0;
             int right = Count() - 1;
 
@@ -61,9 +77,9 @@ namespace lesson_10
                 return right + 1;
             }
 
-            while (left <= right)
+            int mid = (left + right) / 2; ;
+            while (left < right)
             {
-                int mid = (left + right) / 2;
                 var element = Get(mid);
                 if (x > element)
                 {
@@ -71,14 +87,16 @@ namespace lesson_10
                 }
                 else if (x < element)
                 {
-                    right = mid - 1;
+                    right = mid;
                 }
                 else
                 {
                     return mid;
                 }
+                mid = (left + right) / 2;
             }
-            return Count();
+
+            return mid;
         }
 
         public int Count()
