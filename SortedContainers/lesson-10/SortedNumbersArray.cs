@@ -41,7 +41,7 @@ namespace lesson_10
 
         private bool Order(int x, int y)
         {
-            if (!_ascending) return x < y;
+            if (_ascending == false) return x < y;
             else return x > y;
         }
 
@@ -116,7 +116,7 @@ namespace lesson_10
         public int Get(int index)
         {
             int n = index;
-            if (!_ascending) n = Count() - 1 - index;
+            if (_ascending == false) n = Count() - 1 - index;
             return _array[n];
         }
 
