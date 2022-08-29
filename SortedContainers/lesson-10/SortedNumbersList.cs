@@ -23,11 +23,11 @@ namespace lesson_10
             return Count() > befor;
         }
 
-        private bool Order(int x, int y)
-        {
-            if (!_ascending) return x < y;
-            else return x > y;
-        }
+        //private bool Order(int x, int y)
+        //{
+        //    if (!_ascending) return x < y;
+        //    else return x > y;
+        //}
 
 
 
@@ -43,7 +43,7 @@ namespace lesson_10
             int left = 0;
             int right = Count() - 1;
 
-            if (x < Get(left))
+            if (x < Get(left)) 
             {
                 return left;
             }
@@ -52,23 +52,16 @@ namespace lesson_10
                 return right + 1;
             }
 
-            //if ((x < _listnumber[left]) && (_ascending = true))
-            //{
-            //    return left;
-            //}
-            //if ((x > _listnumber[right]) && (_ascending = true))
-            //{
-            //    return right + 1;
-            //}
-
             //if ((x > _listnumber[left]) && (_ascending = false))
             //{
             //    return left;
             //}
-            //if ((x <= _listnumber[right]) && (_ascending = false))
+            //if ((x < _listnumber[right]) && (_ascending = false))
             //{
-            //    return right +1 ;
+            //    return right + 1;
             //}
+
+            
 
             //if (Order(x , _listnumber[right]))
             //{

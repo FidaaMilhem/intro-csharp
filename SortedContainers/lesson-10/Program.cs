@@ -72,20 +72,20 @@
             Fill(snl, 10);
             Print(snl);
 
-            //Console.WriteLine("\n\n_array_________________");
-            //int l = 10;
-            //var sna = new SortedNumbersArray(10);
-            //Test01(sna);
-            //sna = new SortedNumbersArray(10);
-            //Test02(sna);
+            Console.WriteLine("\n\n_array_________________");
+            int l = 10;
+            var sna = new SortedNumbersArray(10,true);
+            Test01(sna);
+            sna = new SortedNumbersArray(10,true) ;
+            Test02(sna);
 
-            //Console.WriteLine("______remove______________");
-            //sna.Remove(8);
-            //Print(sna);
-            //Console.WriteLine("____fill______________");
-            //sna = new SortedNumbersArray(10);
-            //Fill(sna, 10);
-            //Print(sna);
+            Console.WriteLine("______remove______________");
+            sna.Remove(8);
+            Print(sna);
+            Console.WriteLine("____fill______________");
+            sna = new SortedNumbersArray(10, true);
+            Fill(sna, 10);
+            Print(sna);
         }
     }
 }

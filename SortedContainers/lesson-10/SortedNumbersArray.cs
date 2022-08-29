@@ -10,10 +10,12 @@ namespace lesson_10
     {
 
         private int[] _array;
-        private int _count = 0;    
-        public SortedNumbersArray(int capacity)
+        private int _count = 0;
+        private bool _ascending = true;
+        public SortedNumbersArray(int capacity, bool ascending)
         {
             _array = new int[capacity];
+            _ascending = ascending;
         }
 
         //public bool Add(int x)
@@ -36,10 +38,17 @@ namespace lesson_10
         //    return true;
         //}
 
+
+        private bool Order(int x, int y)
+        {
+            if (!_ascending) return x < y;
+            else return x > y;
+        }
+
         public int ShiftRight(int index,int x)
         {
             int c = Count();
-            while ((index < c) && (_array[c - 1] > x))
+            while ((index < c) && (Order(_array[c - 1],x)))
             {
                 _array[c] = _array[c - 1];
                 c--;
@@ -106,7 +115,9 @@ namespace lesson_10
 
         public int Get(int index)
         {
-            return _array[index];
+            int n = index;
+            if (!_ascending) n = Count() - 1 - index;
+            return _array[n];
         }
 
         public int Max()
