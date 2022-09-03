@@ -50,19 +50,19 @@ namespace Calculator
             }
         }
 
-        private int add(int a, int b) {
-            int r = a;
-            for (int i = 0; i < b; i++)
-            {
-                ++r;
-            }
-            return r;
-        }
+        //private int add(int a, int b) {
+        //    int r = a;
+        //    for (int i = 0; i < b; i++)
+        //    {
+        //        ++r;
+        //    }
+        //    return r;
+        //}
         Func<int, int, int> addOp = (a, b) => a + b;
         private void OnAddOperation(object sender, EventArgs e)
         {
-            //ExecuteOperation((a,b) => a + b);
-            ExecuteOperation(add);
+            ExecuteOperation((a,b) => a + b);
+            //ExecuteOperation(add);
         }
         
         private void OnSubtractOperation(object sender, EventArgs e)

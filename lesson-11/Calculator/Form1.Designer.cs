@@ -206,7 +206,7 @@
             this.btnSort.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnSort.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnSort.ForeColor = System.Drawing.Color.Blue;
-            this.btnSort.Location = new System.Drawing.Point(12, 262);
+            this.btnSort.Location = new System.Drawing.Point(12, 278);
             this.btnSort.Name = "btnSort";
             this.btnSort.Size = new System.Drawing.Size(54, 39);
             this.btnSort.TabIndex = 16;
@@ -219,7 +219,7 @@
             this.btnSwap.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnSwap.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnSwap.ForeColor = System.Drawing.Color.Blue;
-            this.btnSwap.Location = new System.Drawing.Point(84, 262);
+            this.btnSwap.Location = new System.Drawing.Point(84, 278);
             this.btnSwap.Name = "btnSwap";
             this.btnSwap.Size = new System.Drawing.Size(54, 39);
             this.btnSwap.TabIndex = 17;
