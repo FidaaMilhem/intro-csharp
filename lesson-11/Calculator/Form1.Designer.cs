@@ -36,8 +36,9 @@
             this.lblError = new System.Windows.Forms.Label();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.listBox1 = new System.Windows.Forms.ListBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_add = new System.Windows.Forms.Button();
             this.btn_multi = new System.Windows.Forms.Button();
+            this.btn_clear = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblCounter
@@ -130,29 +131,44 @@
             this.listBox1.Size = new System.Drawing.Size(91, 139);
             this.listBox1.TabIndex = 7;
             // 
-            // button1
+            // btn_add
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.button1.ForeColor = System.Drawing.Color.Blue;
-            this.button1.Location = new System.Drawing.Point(33, 272);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(122, 56);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Add";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_add);
+            this.btn_add.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btn_add.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_add.ForeColor = System.Drawing.Color.Blue;
+            this.btn_add.Location = new System.Drawing.Point(33, 272);
+            this.btn_add.Name = "btn_add";
+            this.btn_add.Size = new System.Drawing.Size(54, 56);
+            this.btn_add.TabIndex = 8;
+            this.btn_add.Text = "+";
+            this.btn_add.UseVisualStyleBackColor = false;
+            this.btn_add.Click += new System.EventHandler(this.button1_add);
             // 
             // btn_multi
             // 
             this.btn_multi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btn_multi.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_multi.ForeColor = System.Drawing.Color.Blue;
             this.btn_multi.Location = new System.Drawing.Point(33, 334);
             this.btn_multi.Name = "btn_multi";
-            this.btn_multi.Size = new System.Drawing.Size(122, 56);
+            this.btn_multi.Size = new System.Drawing.Size(54, 56);
             this.btn_multi.TabIndex = 9;
-            this.btn_multi.Text = "multibly";
+            this.btn_multi.Text = "*";
             this.btn_multi.UseVisualStyleBackColor = false;
             this.btn_multi.Click += new System.EventHandler(this.btn_multi_Click);
+            // 
+            // btn_clear
+            // 
+            this.btn_clear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btn_clear.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_clear.ForeColor = System.Drawing.Color.Blue;
+            this.btn_clear.Location = new System.Drawing.Point(106, 263);
+            this.btn_clear.Name = "btn_clear";
+            this.btn_clear.Size = new System.Drawing.Size(88, 127);
+            this.btn_clear.TabIndex = 10;
+            this.btn_clear.Text = "CE";
+            this.btn_clear.UseVisualStyleBackColor = false;
+            this.btn_clear.Click += new System.EventHandler(this.btn_clear_Click);
             // 
             // CounterForm
             // 
@@ -160,8 +176,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.ClientSize = new System.Drawing.Size(334, 487);
+            this.Controls.Add(this.btn_clear);
             this.Controls.Add(this.btn_multi);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btn_add);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.lblError);
@@ -189,7 +206,8 @@
         private Label lblError;
         private ToolStrip toolStrip1;
         private ListBox listBox1;
-        private Button button1;
+        private Button btn_add;
         private Button btn_multi;
+        private Button btn_clear;
     }
 }
