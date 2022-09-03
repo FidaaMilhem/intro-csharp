@@ -28,71 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblCounter = new System.Windows.Forms.Label();
-            this.btnUp = new System.Windows.Forms.Button();
-            this.btnDown = new System.Windows.Forms.Button();
-            this.btnReset = new System.Windows.Forms.Button();
+            this.btnPush = new System.Windows.Forms.Button();
             this.txtInput = new System.Windows.Forms.TextBox();
             this.lblError = new System.Windows.Forms.Label();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.listBox1 = new System.Windows.Forms.ListBox();
-            this.btn_add = new System.Windows.Forms.Button();
-            this.btn_multi = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnMulti = new System.Windows.Forms.Button();
             this.btn_clear = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // lblCounter
+            // btnPush
             // 
-            this.lblCounter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.lblCounter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblCounter.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblCounter.ForeColor = System.Drawing.Color.Coral;
-            this.lblCounter.Location = new System.Drawing.Point(64, 49);
-            this.lblCounter.Name = "lblCounter";
-            this.lblCounter.Size = new System.Drawing.Size(200, 33);
-            this.lblCounter.TabIndex = 0;
-            this.lblCounter.Text = "-1";
-            this.lblCounter.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // btnUp
-            // 
-            this.btnUp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.btnUp.Location = new System.Drawing.Point(12, 112);
-            this.btnUp.Name = "btnUp";
-            this.btnUp.Size = new System.Drawing.Size(110, 43);
-            this.btnUp.TabIndex = 1;
-            this.btnUp.Text = "Up";
-            this.btnUp.UseVisualStyleBackColor = false;
-            this.btnUp.Click += new System.EventHandler(this.OnButtonnUp);
-            // 
-            // btnDown
-            // 
-            this.btnDown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.btnDown.Location = new System.Drawing.Point(212, 112);
-            this.btnDown.Name = "btnDown";
-            this.btnDown.Size = new System.Drawing.Size(110, 43);
-            this.btnDown.TabIndex = 2;
-            this.btnDown.Text = "Down";
-            this.btnDown.UseVisualStyleBackColor = false;
-            this.btnDown.Click += new System.EventHandler(this.OnButtonDown);
-            // 
-            // btnReset
-            // 
-            this.btnReset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.btnReset.Location = new System.Drawing.Point(12, 206);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(110, 43);
-            this.btnReset.TabIndex = 3;
-            this.btnReset.Text = "Reset";
-            this.btnReset.UseVisualStyleBackColor = false;
-            this.btnReset.Click += new System.EventHandler(this.OnButtonReset);
+            this.btnPush.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnPush.Location = new System.Drawing.Point(12, 57);
+            this.btnPush.Name = "btnPush";
+            this.btnPush.Size = new System.Drawing.Size(110, 36);
+            this.btnPush.TabIndex = 1;
+            this.btnPush.Text = "Push";
+            this.btnPush.UseVisualStyleBackColor = false;
+            this.btnPush.Click += new System.EventHandler(this.OnPushCommand);
             // 
             // txtInput
             // 
             this.txtInput.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.txtInput.Location = new System.Drawing.Point(140, 217);
+            this.txtInput.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtInput.Location = new System.Drawing.Point(140, 57);
             this.txtInput.Name = "txtInput";
-            this.txtInput.Size = new System.Drawing.Size(182, 23);
+            this.txtInput.Size = new System.Drawing.Size(182, 36);
             this.txtInput.TabIndex = 4;
             // 
             // lblError
@@ -100,9 +63,9 @@
             this.lblError.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblError.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblError.ForeColor = System.Drawing.Color.Red;
-            this.lblError.Location = new System.Drawing.Point(12, 430);
+            this.lblError.Location = new System.Drawing.Point(12, 487);
             this.lblError.Name = "lblError";
-            this.lblError.Size = new System.Drawing.Size(310, 50);
+            this.lblError.Size = new System.Drawing.Size(310, 56);
             this.lblError.TabIndex = 5;
             this.lblError.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -117,76 +80,68 @@
             // listBox1
             // 
             this.listBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.listBox1.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.listBox1.ForeColor = System.Drawing.Color.Blue;
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 15;
-            this.listBox1.Items.AddRange(new object[] {
-            "5",
-            "10",
-            "12",
-            "15",
-            "19",
-            "20"});
-            this.listBox1.Location = new System.Drawing.Point(217, 263);
+            this.listBox1.ItemHeight = 25;
+            this.listBox1.Location = new System.Drawing.Point(164, 110);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(91, 139);
+            this.listBox1.Size = new System.Drawing.Size(158, 354);
             this.listBox1.TabIndex = 7;
             // 
-            // btn_add
+            // btnAdd
             // 
-            this.btn_add.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.btn_add.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_add.ForeColor = System.Drawing.Color.Blue;
-            this.btn_add.Location = new System.Drawing.Point(33, 272);
-            this.btn_add.Name = "btn_add";
-            this.btn_add.Size = new System.Drawing.Size(54, 56);
-            this.btn_add.TabIndex = 8;
-            this.btn_add.Text = "+";
-            this.btn_add.UseVisualStyleBackColor = false;
-            this.btn_add.Click += new System.EventHandler(this.button1_add);
+            this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnAdd.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnAdd.ForeColor = System.Drawing.Color.Blue;
+            this.btnAdd.Location = new System.Drawing.Point(84, 112);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(54, 44);
+            this.btnAdd.TabIndex = 8;
+            this.btnAdd.Text = "+";
+            this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.OnAddOperation);
             // 
-            // btn_multi
+            // btnMulti
             // 
-            this.btn_multi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.btn_multi.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_multi.ForeColor = System.Drawing.Color.Blue;
-            this.btn_multi.Location = new System.Drawing.Point(33, 334);
-            this.btn_multi.Name = "btn_multi";
-            this.btn_multi.Size = new System.Drawing.Size(54, 56);
-            this.btn_multi.TabIndex = 9;
-            this.btn_multi.Text = "*";
-            this.btn_multi.UseVisualStyleBackColor = false;
-            this.btn_multi.Click += new System.EventHandler(this.btn_multi_Click);
+            this.btnMulti.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnMulti.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnMulti.ForeColor = System.Drawing.Color.Blue;
+            this.btnMulti.Location = new System.Drawing.Point(84, 179);
+            this.btnMulti.Name = "btnMulti";
+            this.btnMulti.Size = new System.Drawing.Size(54, 44);
+            this.btnMulti.TabIndex = 9;
+            this.btnMulti.Text = "*";
+            this.btnMulti.UseVisualStyleBackColor = false;
+            this.btnMulti.Click += new System.EventHandler(this.OnMulOperation);
             // 
             // btn_clear
             // 
             this.btn_clear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btn_clear.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_clear.ForeColor = System.Drawing.Color.Blue;
-            this.btn_clear.Location = new System.Drawing.Point(106, 263);
+            this.btn_clear.Location = new System.Drawing.Point(84, 414);
             this.btn_clear.Name = "btn_clear";
-            this.btn_clear.Size = new System.Drawing.Size(88, 127);
+            this.btn_clear.Size = new System.Drawing.Size(54, 50);
             this.btn_clear.TabIndex = 10;
             this.btn_clear.Text = "CE";
             this.btn_clear.UseVisualStyleBackColor = false;
-            this.btn_clear.Click += new System.EventHandler(this.btn_clear_Click);
+            this.btn_clear.Click += new System.EventHandler(this.OnClearNumbersOperation);
             // 
             // CounterForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.ClientSize = new System.Drawing.Size(334, 487);
+            this.ClientSize = new System.Drawing.Size(334, 552);
             this.Controls.Add(this.btn_clear);
-            this.Controls.Add(this.btn_multi);
-            this.Controls.Add(this.btn_add);
+            this.Controls.Add(this.btnMulti);
+            this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.lblError);
             this.Controls.Add(this.txtInput);
-            this.Controls.Add(this.btnReset);
-            this.Controls.Add(this.btnDown);
-            this.Controls.Add(this.btnUp);
-            this.Controls.Add(this.lblCounter);
+            this.Controls.Add(this.btnPush);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "CounterForm";
@@ -197,17 +152,13 @@
         }
 
         #endregion
-
-        private Label lblCounter;
-        private Button btnUp;
-        private Button btnDown;
-        private Button btnReset;
+        private Button btnPush;
         private TextBox txtInput;
         private Label lblError;
         private ToolStrip toolStrip1;
         private ListBox listBox1;
-        private Button btn_add;
-        private Button btn_multi;
+        private Button btnAdd;
+        private Button btnMulti;
         private Button btn_clear;
     }
 }

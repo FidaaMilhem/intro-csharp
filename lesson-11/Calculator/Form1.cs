@@ -2,106 +2,93 @@ namespace Calculator
 {
     public partial class CounterForm : Form
     {
-        public double Value { get; set; }
-
         public CounterForm()
-        {            
-            Value = 0;            
+        {                                 
             InitializeComponent();
-            lblError.BorderStyle = BorderStyle.None;
-            lblCounter.Text = Value.ToString();
+            lblError.BorderStyle = BorderStyle.None;            
         }
 
-        private void UpdateDisplay()
-        {
-            lblCounter.Text = Value.ToString();
-        }
-
-        private void OnButtonnUp(object sender, EventArgs e)
-        {
-            lblError.Text = "";
-            Value += 1;
-            UpdateDisplay();
-
-            if(listBox1.Items.Count > 0)
-            {
-                lblError.Text = listBox1.Items[0].ToString();
-            }
-        }
-
-        private void OnButtonDown(object sender, EventArgs e)
-        {
-            lblError.Text = "";
-            Value -= 1;
-            UpdateDisplay();
-            //listBox1.Items.Add(13);
-            //listBox1.Items.Add(27);
-        }
-
-        private void OnButtonReset(object sender, EventArgs e)
+        
+        private void OnPushCommand(object sender, EventArgs e)
         {
             var t = txtInput.Text;
-
-            int n;
-            if( int.TryParse(t, out n))
+            int number;
+            if(int.TryParse(t, out number))
             {
-                Value = n;
-                UpdateDisplay();
+                listBox1.Items.Add(number);
+                txtInput.Text = "";
                 lblError.Text = "";
             }
             else
             {
                 lblError.Text = $"Not a Number: {t}";
-            }
-
-            txtInput.Text = "";
+            }                        
         }
+        
 
-        private void button1_add(object sender, EventArgs e)
+        
+        private void OnAddOperation(object sender, EventArgs e)
         {
-            
-            double sum = Value;
-            int c = listBox1.Items.Count;
-            if (listBox1.Items.Count > 0)
+            var args = listBox1.Items;
+            if(args.Count > 1)
             {
-                
-                for (int i = 0; i < 2; i++)
-                {
-                    sum += Convert.ToDouble(listBox1.Items[c-1-i]);
-                }
-                 
-            }
-            listBox1.Items.RemoveAt(c - 1);
-            Value = sum;
-            lblCounter.Text = sum.ToString();
-        }
+                var last = args.Count - 1;
+                var lastNumber = args[last];
+                var beforeLastNumber = args[last - 1];
 
-        private void btn_multi_Click(object sender, EventArgs e)
-        {
-            double mul;
-            if (Value != 0) mul = Value;
-            else mul = 1;   
-            int c = listBox1.Items.Count;
-            if (listBox1.Items.Count > 0)
+                var a = Convert.ToInt32(lastNumber);
+                var b = Convert.ToInt32(beforeLastNumber);
+                var result = a + b;
+
+                args.RemoveAt(last);
+                args.RemoveAt(last - 1);
+                args.Add(result);
+                lblError.Text = "";
+            }
+            else
             {
-                for (int i = 0; i < 2; i++)
-                {
-                    mul *= Convert.ToDouble(listBox1.Items[c - 1 - i]);
-                }
-                
-            }
-           
-            Value = mul;
-            listBox1.Items.RemoveAt(c - 1);
-            lblCounter.Text = mul.ToString();
-
+                lblError.Text = "Need Two Numbers";
+            }           
         }
-
-        private void btn_clear_Click(object sender, EventArgs e)
+        
+        private void OnSubtractOperation(object sender, EventArgs e)
         {
-            lblCounter.Text = "";
-            Value = 0;
+
         }
+        private void OnMulOperation(object sender, EventArgs e)
+        {
+            var args = listBox1.Items;
+            if (args.Count > 1)
+            {
+                var last = args.Count - 1;
+                var lastNumber = args[last];
+                var beforeLastNumber = args[last - 1];
+
+                var a = Convert.ToInt32(lastNumber);
+                var b = Convert.ToInt32(beforeLastNumber);
+                var result = a * b;
+
+                args.RemoveAt(last);
+                args.RemoveAt(last - 1);
+                args.Add(result);
+                lblError.Text = "";
+            }
+            else
+            {
+                lblError.Text = "Need Two Numbers";
+            }
+        }
+
+        private void OnDivOperation(object sender, EventArgs e)
+        {
+
+        }
+
+        private void OnClearNumbersOperation(object sender, EventArgs e)
+        {
+            listBox1.Items.Clear();
+        }
+
     }
-    
+
 }
