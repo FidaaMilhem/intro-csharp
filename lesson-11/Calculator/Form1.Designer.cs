@@ -38,14 +38,18 @@
             this.btn_clear = new System.Windows.Forms.Button();
             this.btnSubtract = new System.Windows.Forms.Button();
             this.btnDiv = new System.Windows.Forms.Button();
+            this.btnMudul = new System.Windows.Forms.Button();
+            this.btnAbs = new System.Windows.Forms.Button();
+            this.btnBower = new System.Windows.Forms.Button();
+            this.btnSort = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnPush
             // 
             this.btnPush.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.btnPush.Location = new System.Drawing.Point(12, 57);
+            this.btnPush.Location = new System.Drawing.Point(12, 50);
             this.btnPush.Name = "btnPush";
-            this.btnPush.Size = new System.Drawing.Size(110, 36);
+            this.btnPush.Size = new System.Drawing.Size(110, 32);
             this.btnPush.TabIndex = 1;
             this.btnPush.Text = "Push";
             this.btnPush.UseVisualStyleBackColor = false;
@@ -55,7 +59,7 @@
             // 
             this.txtInput.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.txtInput.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtInput.Location = new System.Drawing.Point(140, 57);
+            this.txtInput.Location = new System.Drawing.Point(140, 50);
             this.txtInput.Name = "txtInput";
             this.txtInput.Size = new System.Drawing.Size(182, 36);
             this.txtInput.TabIndex = 4;
@@ -65,9 +69,9 @@
             this.lblError.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblError.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblError.ForeColor = System.Drawing.Color.Red;
-            this.lblError.Location = new System.Drawing.Point(12, 487);
+            this.lblError.Location = new System.Drawing.Point(12, 430);
             this.lblError.Name = "lblError";
-            this.lblError.Size = new System.Drawing.Size(310, 56);
+            this.lblError.Size = new System.Drawing.Size(310, 50);
             this.lblError.TabIndex = 5;
             this.lblError.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -86,9 +90,9 @@
             this.listBox1.ForeColor = System.Drawing.Color.Blue;
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 25;
-            this.listBox1.Location = new System.Drawing.Point(164, 110);
+            this.listBox1.Location = new System.Drawing.Point(164, 97);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(158, 354);
+            this.listBox1.Size = new System.Drawing.Size(158, 304);
             this.listBox1.TabIndex = 7;
             // 
             // btnAdd
@@ -96,9 +100,9 @@
             this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnAdd.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnAdd.ForeColor = System.Drawing.Color.Blue;
-            this.btnAdd.Location = new System.Drawing.Point(84, 112);
+            this.btnAdd.Location = new System.Drawing.Point(84, 99);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(54, 44);
+            this.btnAdd.Size = new System.Drawing.Size(54, 39);
             this.btnAdd.TabIndex = 8;
             this.btnAdd.Text = "+";
             this.btnAdd.UseVisualStyleBackColor = false;
@@ -109,9 +113,9 @@
             this.btnMulti.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnMulti.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnMulti.ForeColor = System.Drawing.Color.Blue;
-            this.btnMulti.Location = new System.Drawing.Point(84, 238);
+            this.btnMulti.Location = new System.Drawing.Point(84, 157);
             this.btnMulti.Name = "btnMulti";
-            this.btnMulti.Size = new System.Drawing.Size(54, 44);
+            this.btnMulti.Size = new System.Drawing.Size(54, 39);
             this.btnMulti.TabIndex = 9;
             this.btnMulti.Text = "*";
             this.btnMulti.UseVisualStyleBackColor = false;
@@ -122,9 +126,9 @@
             this.btn_clear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btn_clear.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_clear.ForeColor = System.Drawing.Color.Blue;
-            this.btn_clear.Location = new System.Drawing.Point(84, 414);
+            this.btn_clear.Location = new System.Drawing.Point(33, 336);
             this.btn_clear.Name = "btn_clear";
-            this.btn_clear.Size = new System.Drawing.Size(54, 50);
+            this.btn_clear.Size = new System.Drawing.Size(105, 44);
             this.btn_clear.TabIndex = 10;
             this.btn_clear.Text = "CE";
             this.btn_clear.UseVisualStyleBackColor = false;
@@ -135,9 +139,9 @@
             this.btnSubtract.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnSubtract.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnSubtract.ForeColor = System.Drawing.Color.Blue;
-            this.btnSubtract.Location = new System.Drawing.Point(84, 174);
+            this.btnSubtract.Location = new System.Drawing.Point(12, 99);
             this.btnSubtract.Name = "btnSubtract";
-            this.btnSubtract.Size = new System.Drawing.Size(54, 44);
+            this.btnSubtract.Size = new System.Drawing.Size(54, 39);
             this.btnSubtract.TabIndex = 11;
             this.btnSubtract.Text = "-";
             this.btnSubtract.UseVisualStyleBackColor = false;
@@ -148,20 +152,76 @@
             this.btnDiv.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnDiv.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnDiv.ForeColor = System.Drawing.Color.Blue;
-            this.btnDiv.Location = new System.Drawing.Point(84, 304);
+            this.btnDiv.Location = new System.Drawing.Point(12, 157);
             this.btnDiv.Name = "btnDiv";
-            this.btnDiv.Size = new System.Drawing.Size(54, 44);
+            this.btnDiv.Size = new System.Drawing.Size(54, 39);
             this.btnDiv.TabIndex = 12;
             this.btnDiv.Text = "/";
             this.btnDiv.UseVisualStyleBackColor = false;
             this.btnDiv.Click += new System.EventHandler(this.OnDivOperation);
             // 
+            // btnMudul
+            // 
+            this.btnMudul.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnMudul.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnMudul.ForeColor = System.Drawing.Color.Blue;
+            this.btnMudul.Location = new System.Drawing.Point(12, 217);
+            this.btnMudul.Name = "btnMudul";
+            this.btnMudul.Size = new System.Drawing.Size(54, 39);
+            this.btnMudul.TabIndex = 13;
+            this.btnMudul.Text = "%";
+            this.btnMudul.UseVisualStyleBackColor = false;
+            this.btnMudul.Click += new System.EventHandler(this.OnMudulu);
+            // 
+            // btnAbs
+            // 
+            this.btnAbs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnAbs.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnAbs.ForeColor = System.Drawing.Color.Blue;
+            this.btnAbs.Location = new System.Drawing.Point(12, 280);
+            this.btnAbs.Name = "btnAbs";
+            this.btnAbs.Size = new System.Drawing.Size(72, 39);
+            this.btnAbs.TabIndex = 14;
+            this.btnAbs.Text = "Abs";
+            this.btnAbs.UseVisualStyleBackColor = false;
+            this.btnAbs.Click += new System.EventHandler(this.OnAbs);
+            // 
+            // btnBower
+            // 
+            this.btnBower.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnBower.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnBower.ForeColor = System.Drawing.Color.Blue;
+            this.btnBower.Location = new System.Drawing.Point(84, 217);
+            this.btnBower.Name = "btnBower";
+            this.btnBower.Size = new System.Drawing.Size(54, 39);
+            this.btnBower.TabIndex = 15;
+            this.btnBower.Text = "^";
+            this.btnBower.UseVisualStyleBackColor = false;
+            this.btnBower.Click += new System.EventHandler(this.btnBower_Click);
+            // 
+            // btnSort
+            // 
+            this.btnSort.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnSort.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnSort.ForeColor = System.Drawing.Color.Blue;
+            this.btnSort.Location = new System.Drawing.Point(90, 280);
+            this.btnSort.Name = "btnSort";
+            this.btnSort.Size = new System.Drawing.Size(54, 39);
+            this.btnSort.TabIndex = 16;
+            this.btnSort.Text = "√";
+            this.btnSort.UseVisualStyleBackColor = false;
+            this.btnSort.Click += new System.EventHandler(this.btnSort_Click);
+            // 
             // CounterForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.ClientSize = new System.Drawing.Size(334, 552);
+            this.ClientSize = new System.Drawing.Size(334, 487);
+            this.Controls.Add(this.btnSort);
+            this.Controls.Add(this.btnBower);
+            this.Controls.Add(this.btnAbs);
+            this.Controls.Add(this.btnMudul);
             this.Controls.Add(this.btnDiv);
             this.Controls.Add(this.btnSubtract);
             this.Controls.Add(this.btn_clear);
@@ -192,5 +252,9 @@
         private Button btn_clear;
         private Button btnSubtract;
         private Button btnDiv;
+        private Button btnMudul;
+        private Button btnAbs;
+        private Button btnBower;
+        private Button btnSort;
     }
 }

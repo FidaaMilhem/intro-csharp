@@ -78,12 +78,40 @@ namespace Calculator
         {
             ExecuteOperation((a, b) => b / a);
         }
+        private void OnMudulu(object sender, EventArgs e)
+        {
+            ExecuteOperation((a, b) => a % b);
+        }
+        private void btnBower_Click(object sender, EventArgs e)
+        {
+            ExecuteOperation((a, b) => (int)Math.Pow(a,b));
+        }
+        private void btnSort_Click(object sender, EventArgs e)
+        {
+            var args = listBox1.Items;
+            var last = args.Count - 1;
+            var lastNumber = args[last];
+            var a = Convert.ToInt32(lastNumber);
+            if (a > 0) args[last] = Math.Sqrt(a);
+            else lblError.Text = "negative number";
+        }
+        private void OnAbs(object sender, EventArgs e)
+        {
+            var args = listBox1.Items;
+            var last = args.Count - 1;
+            var lastNumber = args[last];
+            var a = Convert.ToInt32(lastNumber);
+            if (a < 0) args[last]= - a;
+
+
+        }
 
         private void OnClearNumbersOperation(object sender, EventArgs e)
         {
             listBox1.Items.Clear();
         }
 
+        
     }
 
 }
