@@ -1,13 +1,5 @@
 namespace Calculator
 {
-    enum OperationsEnum
-    {
-        Add,
-        Subtract,
-        Multiply,
-        Divide,
-    }
-
     public partial class CounterForm : Form
     {
         public CounterForm()
@@ -32,30 +24,9 @@ namespace Calculator
                 lblError.Text = $"Not a Number: {t}";
             }                        
         }
-        
-        private int PerformCalc(int a, int b, OperationsEnum op)
-        {
+                
 
-            return op switch
-            {
-                OperationsEnum.Add => a + b,
-                OperationsEnum.Subtract => b - a,
-                OperationsEnum.Multiply => a * b,
-                OperationsEnum.Divide => b / a,
-            };
-
-
-            //switch (op)
-            //{                
-            //    case OperationsEnum.Add: return a + b;
-            //    case OperationsEnum.Subtract: return a - b;
-            //    case OperationsEnum.Multiply: return a * b;
-            //    case OperationsEnum.Divide: return b / a;
-            //    default: return 0;
-            //}           
-        }
-
-        private void ExecuteOperation(OperationsEnum op)
+        private void ExecuteOperation(Func<int, int, int> op)
         {
             var args = listBox1.Items;
             if (args.Count > 1)
@@ -66,7 +37,7 @@ namespace Calculator
 
                 var a = Convert.ToInt32(lastNumber);
                 var b = Convert.ToInt32(beforeLastNumber);
-                var result = PerformCalc(a, b, op);
+                var result = op(a, b);
 
                 args.RemoveAt(last);
                 args.RemoveAt(last - 1);
@@ -78,23 +49,34 @@ namespace Calculator
                 lblError.Text = "Need Two Numbers";
             }
         }
+
+        private int add(int a, int b) {
+            int r = a;
+            for (int i = 0; i < b; i++)
+            {
+                ++r;
+            }
+            return r;
+        }
+        Func<int, int, int> addOp = (a, b) => a + b;
         private void OnAddOperation(object sender, EventArgs e)
         {
-            ExecuteOperation(OperationsEnum.Add);
+            //ExecuteOperation((a,b) => a + b);
+            ExecuteOperation(add);
         }
         
         private void OnSubtractOperation(object sender, EventArgs e)
         {
-            ExecuteOperation(OperationsEnum.Subtract);
+            ExecuteOperation((a, b) => b - a);
         }
         private void OnMulOperation(object sender, EventArgs e)
         {
-            ExecuteOperation(OperationsEnum.Multiply);
+            ExecuteOperation((a, b) => a * b);
         }
-
+       
         private void OnDivOperation(object sender, EventArgs e)
         {
-            ExecuteOperation(OperationsEnum.Divide);
+            ExecuteOperation((a, b) => b / a);
         }
 
         private void OnClearNumbersOperation(object sender, EventArgs e)
