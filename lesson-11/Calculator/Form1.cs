@@ -2,7 +2,7 @@ namespace Calculator
 {
     public partial class CounterForm : Form
     {
-        public int Value { get; set; }
+        public double Value { get; set; }
 
         public CounterForm()
         {            
@@ -64,19 +64,23 @@ namespace Calculator
             int c = listBox1.Items.Count;
             if (listBox1.Items.Count > 0)
             {
+                
                 for (int i = 0; i < 2; i++)
                 {
                     sum += Convert.ToDouble(listBox1.Items[c-1-i]);
                 }
-                listBox1.Items.RemoveAt(c - 1);
+                 
             }
-            
+            listBox1.Items.RemoveAt(c - 1);
+            Value = sum;
             lblCounter.Text = sum.ToString();
         }
 
         private void btn_multi_Click(object sender, EventArgs e)
         {
-            double mul = Value;
+            double mul;
+            if (Value != 0) mul = Value;
+            else mul = 1;   
             int c = listBox1.Items.Count;
             if (listBox1.Items.Count > 0)
             {
@@ -84,8 +88,10 @@ namespace Calculator
                 {
                     mul *= Convert.ToDouble(listBox1.Items[c - 1 - i]);
                 }
-
+                
             }
+           
+            Value = mul;
             listBox1.Items.RemoveAt(c - 1);
             lblCounter.Text = mul.ToString();
 
