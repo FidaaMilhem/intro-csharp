@@ -36,6 +36,8 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnMulti = new System.Windows.Forms.Button();
             this.btn_clear = new System.Windows.Forms.Button();
+            this.btnSubtract = new System.Windows.Forms.Button();
+            this.btnDiv = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnPush
@@ -107,7 +109,7 @@
             this.btnMulti.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnMulti.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnMulti.ForeColor = System.Drawing.Color.Blue;
-            this.btnMulti.Location = new System.Drawing.Point(84, 179);
+            this.btnMulti.Location = new System.Drawing.Point(84, 238);
             this.btnMulti.Name = "btnMulti";
             this.btnMulti.Size = new System.Drawing.Size(54, 44);
             this.btnMulti.TabIndex = 9;
@@ -128,12 +130,40 @@
             this.btn_clear.UseVisualStyleBackColor = false;
             this.btn_clear.Click += new System.EventHandler(this.OnClearNumbersOperation);
             // 
+            // btnSubtract
+            // 
+            this.btnSubtract.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnSubtract.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnSubtract.ForeColor = System.Drawing.Color.Blue;
+            this.btnSubtract.Location = new System.Drawing.Point(84, 174);
+            this.btnSubtract.Name = "btnSubtract";
+            this.btnSubtract.Size = new System.Drawing.Size(54, 44);
+            this.btnSubtract.TabIndex = 11;
+            this.btnSubtract.Text = "-";
+            this.btnSubtract.UseVisualStyleBackColor = false;
+            this.btnSubtract.Click += new System.EventHandler(this.OnSubtractOperation);
+            // 
+            // btnDiv
+            // 
+            this.btnDiv.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnDiv.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnDiv.ForeColor = System.Drawing.Color.Blue;
+            this.btnDiv.Location = new System.Drawing.Point(84, 304);
+            this.btnDiv.Name = "btnDiv";
+            this.btnDiv.Size = new System.Drawing.Size(54, 44);
+            this.btnDiv.TabIndex = 12;
+            this.btnDiv.Text = "/";
+            this.btnDiv.UseVisualStyleBackColor = false;
+            this.btnDiv.Click += new System.EventHandler(this.OnDivOperation);
+            // 
             // CounterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.ClientSize = new System.Drawing.Size(334, 552);
+            this.Controls.Add(this.btnDiv);
+            this.Controls.Add(this.btnSubtract);
             this.Controls.Add(this.btn_clear);
             this.Controls.Add(this.btnMulti);
             this.Controls.Add(this.btnAdd);
@@ -160,5 +190,7 @@
         private Button btnAdd;
         private Button btnMulti;
         private Button btn_clear;
+        private Button btnSubtract;
+        private Button btnDiv;
     }
 }
