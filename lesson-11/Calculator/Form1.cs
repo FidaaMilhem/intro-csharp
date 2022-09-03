@@ -35,24 +35,14 @@ namespace Calculator
         
         private int PerformCalc(int a, int b, OperationsEnum op)
         {
-            if (op == OperationsEnum.Add)
-            {
-                return a + b;
-            }
-            else if (op == OperationsEnum.Subtract)
-            {
-                return b - a;
-            }
-            else if (op == OperationsEnum.Multiply)
-            {
-                return a * b;
-            }
-            else if (op == OperationsEnum.Divide)
-            {
-                return b / a;
-            }
-
-            return 0;
+            switch (op)
+            {                
+                case OperationsEnum.Add: return a + b;
+                case OperationsEnum.Subtract: return a - b;
+                case OperationsEnum.Multiply: return a * b;
+                case OperationsEnum.Divide: return b / a;
+                default: return 0;
+            }            
         }
         private void ExecuteOperation(OperationsEnum op)
         {
