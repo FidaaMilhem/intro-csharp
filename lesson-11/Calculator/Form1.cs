@@ -1,5 +1,13 @@
 namespace Calculator
 {
+    enum OperationsEnum
+    {
+        Add,
+        Subtract,
+        Multiply,
+        Divide,
+    }
+
     public partial class CounterForm : Form
     {
         public CounterForm()
@@ -25,27 +33,28 @@ namespace Calculator
             }                        
         }
         
-        private int PerformCalc(int a, int b, char op)
+        private int PerformCalc(int a, int b, OperationsEnum op)
         {
-            if (op == '+')
+            if (op == OperationsEnum.Add)
             {
                 return a + b;
             }
-            else if (op == '-')
+            else if (op == OperationsEnum.Subtract)
             {
                 return b - a;
             }
-            else if (op == '*')
+            else if (op == OperationsEnum.Multiply)
             {
                 return a * b;
             }
-            else if (op == '/')
+            else if (op == OperationsEnum.Divide)
             {
                 return b / a;
             }
+
             return 0;
         }
-        private void ExecuteOperation(char op)
+        private void ExecuteOperation(OperationsEnum op)
         {
             var args = listBox1.Items;
             if (args.Count > 1)
@@ -70,21 +79,21 @@ namespace Calculator
         }
         private void OnAddOperation(object sender, EventArgs e)
         {
-            ExecuteOperation('+');
+            ExecuteOperation(OperationsEnum.Add);
         }
         
         private void OnSubtractOperation(object sender, EventArgs e)
         {
-            ExecuteOperation('-');
+            ExecuteOperation(OperationsEnum.Subtract);
         }
         private void OnMulOperation(object sender, EventArgs e)
         {
-            ExecuteOperation('*');
+            ExecuteOperation(OperationsEnum.Multiply);
         }
 
         private void OnDivOperation(object sender, EventArgs e)
         {
-            ExecuteOperation('/');
+            ExecuteOperation(OperationsEnum.Divide);
         }
 
         private void OnClearNumbersOperation(object sender, EventArgs e)
