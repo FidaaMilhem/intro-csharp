@@ -113,7 +113,7 @@ namespace Calculator
                 var a = Convert.ToInt32(lastNumber);
                 
                 args.RemoveAt(last);
-                args.Insert(1, a);
+                args.Insert(last -2, a);
 
             }
         }
