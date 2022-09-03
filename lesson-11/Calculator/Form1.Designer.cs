@@ -42,6 +42,8 @@
             this.btnAbs = new System.Windows.Forms.Button();
             this.btnBower = new System.Windows.Forms.Button();
             this.btnSort = new System.Windows.Forms.Button();
+            this.btnSwap = new System.Windows.Forms.Button();
+            this.btnRotat3 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnPush
@@ -212,12 +214,40 @@
             this.btnSort.UseVisualStyleBackColor = false;
             this.btnSort.Click += new System.EventHandler(this.btnSort_Click);
             // 
+            // btnSwap
+            // 
+            this.btnSwap.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnSwap.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnSwap.ForeColor = System.Drawing.Color.Blue;
+            this.btnSwap.Location = new System.Drawing.Point(21, 386);
+            this.btnSwap.Name = "btnSwap";
+            this.btnSwap.Size = new System.Drawing.Size(54, 39);
+            this.btnSwap.TabIndex = 17;
+            this.btnSwap.Text = "S";
+            this.btnSwap.UseVisualStyleBackColor = false;
+            this.btnSwap.Click += new System.EventHandler(this.OnbtnSwap);
+            // 
+            // btnRotat3
+            // 
+            this.btnRotat3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnRotat3.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnRotat3.ForeColor = System.Drawing.Color.Blue;
+            this.btnRotat3.Location = new System.Drawing.Point(90, 386);
+            this.btnRotat3.Name = "btnRotat3";
+            this.btnRotat3.Size = new System.Drawing.Size(54, 39);
+            this.btnRotat3.TabIndex = 18;
+            this.btnRotat3.Text = "R3";
+            this.btnRotat3.UseVisualStyleBackColor = false;
+            this.btnRotat3.Click += new System.EventHandler(this.btnRotat3_Click);
+            // 
             // CounterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.ClientSize = new System.Drawing.Size(334, 487);
+            this.Controls.Add(this.btnRotat3);
+            this.Controls.Add(this.btnSwap);
             this.Controls.Add(this.btnSort);
             this.Controls.Add(this.btnBower);
             this.Controls.Add(this.btnAbs);
@@ -256,5 +286,7 @@
         private Button btnAbs;
         private Button btnBower;
         private Button btnSort;
+        private Button btnSwap;
+        private Button btnRotat3;
     }
 }

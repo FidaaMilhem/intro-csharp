@@ -86,6 +86,38 @@ namespace Calculator
         {
             ExecuteOperation((a, b) => (int)Math.Pow(a,b));
         }
+        private void OnbtnSwap(object sender, EventArgs e)
+        {
+            var args = listBox1.Items;
+            if (args.Count > 1)
+            {
+                var last = args.Count - 1;
+                var lastNumber = args[last];
+                var beforeLastNumber = args[last - 1];
+
+                var a = Convert.ToInt32(lastNumber);
+                var b = Convert.ToInt32(beforeLastNumber);
+                args[last] = b;
+                args[last - 1] = a;
+
+            }
+        }
+        private void btnRotat3_Click(object sender, EventArgs e)
+        {
+            var args = listBox1.Items;
+            if (args.Count > 3)
+            {
+
+                var last = args.Count - 1;
+                var lastNumber = args[last];
+                var a = Convert.ToInt32(lastNumber);
+                
+                args.RemoveAt(last);
+                args.Insert(1, a);
+
+            }
+        }
+
         private void btnSort_Click(object sender, EventArgs e)
         {
             var args = listBox1.Items;
