@@ -35,15 +35,26 @@ namespace Calculator
         
         private int PerformCalc(int a, int b, OperationsEnum op)
         {
-            switch (op)
-            {                
-                case OperationsEnum.Add: return a + b;
-                case OperationsEnum.Subtract: return a - b;
-                case OperationsEnum.Multiply: return a * b;
-                case OperationsEnum.Divide: return b / a;
-                default: return 0;
-            }            
+
+            return op switch
+            {
+                OperationsEnum.Add => a + b,
+                OperationsEnum.Subtract => b - a,
+                OperationsEnum.Multiply => a * b,
+                OperationsEnum.Divide => b / a,
+            };
+
+
+            //switch (op)
+            //{                
+            //    case OperationsEnum.Add: return a + b;
+            //    case OperationsEnum.Subtract: return a - b;
+            //    case OperationsEnum.Multiply: return a * b;
+            //    case OperationsEnum.Divide: return b / a;
+            //    default: return 0;
+            //}           
         }
+
         private void ExecuteOperation(OperationsEnum op)
         {
             var args = listBox1.Items;
