@@ -34,7 +34,10 @@
             this.btnStep = new System.Windows.Forms.Button();
             this.Run = new System.Windows.Forms.Button();
             this.listBox2 = new System.Windows.Forms.ListBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBoxCode = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btnBuild = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBox1
@@ -47,28 +50,30 @@
             // 
             // label1
             // 
-            this.label1.BackColor = System.Drawing.Color.Lime;
-            this.label1.Location = new System.Drawing.Point(324, 636);
+            this.label1.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(98, 22);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(258, 21);
+            this.label1.Size = new System.Drawing.Size(258, 24);
             this.label1.TabIndex = 1;
-            this.label1.Text = "label1";
+            this.label1.Text = "Editor ";
             // 
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 15;
-            this.listBox1.Location = new System.Drawing.Point(354, 49);
+            this.listBox1.Location = new System.Drawing.Point(474, 64);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(135, 514);
+            this.listBox1.Size = new System.Drawing.Size(143, 499);
             this.listBox1.TabIndex = 2;
             // 
             // btnStep
             // 
             this.btnStep.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.btnStep.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnStep.Location = new System.Drawing.Point(602, 608);
             this.btnStep.Name = "btnStep";
-            this.btnStep.Size = new System.Drawing.Size(102, 24);
+            this.btnStep.Size = new System.Drawing.Size(102, 39);
             this.btnStep.TabIndex = 3;
             this.btnStep.Text = "Step";
             this.btnStep.UseVisualStyleBackColor = false;
@@ -76,9 +81,10 @@
             // Run
             // 
             this.Run.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.Run.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.Run.Location = new System.Drawing.Point(735, 608);
             this.Run.Name = "Run";
-            this.Run.Size = new System.Drawing.Size(102, 24);
+            this.Run.Size = new System.Drawing.Size(102, 39);
             this.Run.TabIndex = 4;
             this.Run.Text = "btnRun";
             this.Run.UseVisualStyleBackColor = false;
@@ -87,26 +93,61 @@
             // 
             this.listBox2.FormattingEnabled = true;
             this.listBox2.ItemHeight = 15;
-            this.listBox2.Location = new System.Drawing.Point(569, 49);
+            this.listBox2.Location = new System.Drawing.Point(818, 103);
             this.listBox2.Name = "listBox2";
             this.listBox2.Size = new System.Drawing.Size(135, 334);
             this.listBox2.TabIndex = 5;
             // 
-            // textBox2
+            // textBoxCode
             // 
-            this.textBox2.Location = new System.Drawing.Point(66, 49);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox2.Size = new System.Drawing.Size(226, 583);
-            this.textBox2.TabIndex = 6;
+            this.textBoxCode.Location = new System.Drawing.Point(112, 64);
+            this.textBoxCode.Multiline = true;
+            this.textBoxCode.Name = "textBoxCode";
+            this.textBoxCode.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBoxCode.Size = new System.Drawing.Size(226, 499);
+            this.textBoxCode.TabIndex = 6;
+            // 
+            // label2
+            // 
+            this.label2.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(446, 22);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(195, 24);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Binary code";
+            // 
+            // label3
+            // 
+            this.label3.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(776, 49);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(202, 27);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Stack";
+            // 
+            // btnBuild
+            // 
+            this.btnBuild.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.btnBuild.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnBuild.Location = new System.Drawing.Point(344, 235);
+            this.btnBuild.Name = "btnBuild";
+            this.btnBuild.Size = new System.Drawing.Size(102, 39);
+            this.btnBuild.TabIndex = 9;
+            this.btnBuild.Text = "build";
+            this.btnBuild.UseVisualStyleBackColor = false;
+            this.btnBuild.Click += new System.EventHandler(this.btnBuild_Click);
             // 
             // Emulator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1114, 659);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.btnBuild);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.textBoxCode);
             this.Controls.Add(this.listBox2);
             this.Controls.Add(this.Run);
             this.Controls.Add(this.btnStep);
@@ -128,6 +169,9 @@
         private Button btnStep;
         private Button Run;
         private ListBox listBox2;
-        private TextBox textBox2;
+        private TextBox textBoxCode;
+        private Label label2;
+        private Label label3;
+        private Button btnBuild;
     }
 }
