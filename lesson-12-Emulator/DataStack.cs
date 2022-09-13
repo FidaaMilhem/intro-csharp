@@ -12,23 +12,28 @@ namespace Emulator
         private Stack<int> dataStack = new Stack<int>();
         
 
-        public Action<int> stackViewPush;
-        public Action stackViewPop;
+        public Action<int> OnPush;
+        public Action OnPop;
+
+        public DataStack()
+        {
+
+        }
 
         public DataStack(Action<int> stackViewerPush, Action stackViewerPop)
         {
-            stackViewPush = stackViewerPush;
-            stackViewPop = stackViewerPop;
+            OnPush = stackViewerPush;
+            OnPop = stackViewerPop;
         }
         public void PUSH(int data)
         {
             dataStack.Push(data);
-            stackViewPush(data);
+            OnPush(data);
 
         }
         public int POP()
         {
-            stackViewPop();
+            OnPop();
             return dataStack.Pop();
         }
 
@@ -38,5 +43,10 @@ namespace Emulator
         }       
 
         public int Count => dataStack.Count;
+
+        internal void Clear()
+        {
+            dataStack.Clear();
+        }
     }
 }

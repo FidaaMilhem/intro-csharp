@@ -1,37 +1,79 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Emulator
 {
     public class Controller
     {
-        public int PC { get; set; } = 0;
+        private int _pc;
+        public int PC {
+            get
+            {
+                return _pc;
+            }
+            set {
+                _pc = value;
+                if(OnPcChange != null)
+                {
+                    OnPcChange(_pc);
+                }
+            }
+        }
+
+        public Action<int> OnPcChange;
+
+        internal void Reset()
+        {
+            PC = 0;
+        }
     }
 
     public class ProgramExecuter
     {
-        public Controller _controller = new Controller();
+        private Controller _controller = new Controller();
               
         
         private List<Instruction> _instructions;
-        private DataStack _stack;
-        private DataStack _stackIP;
+        private DataStack _stack = new DataStack();
+        private DataStack _stackIP = new DataStack();
 
-        public ProgramExecuter(List<Instruction> instructions, DataStack stack, DataStack stackIP)
+        public void AttachPC(Action<int> action)
         {
-            _instructions = instructions;
-            _stack = stack;
-            _stackIP = stackIP; 
+            _controller.OnPcChange = action;
+        }
+
+        public void AttachDataStack(Action<int> onPush, Action onPop)
+        {
+            _stack.OnPush = onPush;
+            _stack.OnPop = onPop;
+        }
+
+        public void AttachIpStack(Action<int> onPush, Action onPop)
+        {
+            _stackIP.OnPush = onPush;
+            _stackIP.OnPop = onPop;
+        }
+        public ProgramExecuter() { }
+
+
+        public ProgramExecuter(List<Instruction> instructions)
+        {
+            _instructions = instructions;            
         }
 
         public bool IsHalted =>    _controller.PC >= _instructions.Count 
                                 || CurrentInstruction()._opCode == OpCodeEnum.HLT;
 
         private Instruction CurrentInstruction() => _instructions[_controller.PC];
-        
+
+        internal void Load(List<Instruction> opcodes)
+        {
+            _instructions = opcodes;
+            _controller.Reset();
+            _stack.Clear();
+            _stackIP.Clear();
+        }
+
         private bool NotEnoughParameters(int n) => n > _stack.Count;
             
         public bool ExecuteStep()

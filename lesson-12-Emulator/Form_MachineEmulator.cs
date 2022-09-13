@@ -6,15 +6,24 @@ namespace Emulator
     public partial class Form_MachineEmulator : Form
     {        
         private ProgramExecuter _executor;        
-
-        private readonly DataStack _stack;
-        private readonly DataStack _stackIP;
-
+        
         public Form_MachineEmulator()
         {
             InitializeComponent();
-            _stack = new DataStack(stackViewerPush, stackViewerPop);
-            _stackIP = new DataStack(IPstackViewerPush, IPstackViewerPop);
+            _executor = new ProgramExecuter();
+            _executor.AttachDataStack(
+                        (data) => listBox_StackViewer.Items.Add(data),
+                        () => listBox_StackViewer.Items.RemoveAt(listBox_StackViewer.Items.Count - 1)
+                    );
+
+
+            _executor.AttachIpStack(
+                        (data) => listBox_IpStack.Items.Add(data),
+                        () => listBox_IpStack.Items.RemoveAt(listBox_IpStack.Items.Count - 1)
+                );
+            
+            _executor.AttachPC( (pc) => label_PC.Text = $"PC: {pc}" );
+
             textBox_ProgramCode.Text = DemoPrograms.SimpleWithJumpsIP;
         }
 
@@ -31,28 +40,13 @@ namespace Emulator
                 listBox_ExeCode.Items.Add($"{label++}: {opcode.ToString()}");
             }
 
-            _executor = new ProgramExecuter(opcodes, _stack,_stackIP);
+            _executor.Load(opcodes);
 
             label_PC.Text = "PC: 0";
             listBox_StackViewer.Items.Clear();
         }
 
-        private  void stackViewerPush(int data)
-        {
-            listBox_StackViewer.Items.Add(data);
-        }
-        private  void stackViewerPop()
-        {
-            listBox_StackViewer.Items.RemoveAt(listBox_StackViewer.Items.Count - 1);
-        }
-        private void IPstackViewerPush(int data)
-        {
-            listBox_IpStack.Items.Add(data);
-        }
-        private void IPstackViewerPop()
-        {
-            listBox_IpStack.Items.RemoveAt(listBox_IpStack.Items.Count - 1);
-        }
+        
         private void ExecuteStep_Click(object sender, EventArgs e)
         {
             if (_executor.IsHalted)
@@ -69,10 +63,7 @@ namespace Emulator
                 else
                 {
                     textBox_ExecutingMessage.Text = "Halting on Error";
-                }
-                
-
-                label_PC.Text = $"PC: {_executor._controller.PC}";
+                }                                
             }
             
         }
