@@ -68,9 +68,7 @@ namespace Emulator
         private void Clear_Click(object sender, EventArgs e)
         {
             textBox_ProgramCode.Clear();
-            listBox_StackViewer.Items.Clear();
-            listBox_ExeCode.Items.Clear();
-            listBox_IpStack.Items.Clear();
+            _executor.Reset();            
         }
 
         private void Run_Click(object sender, EventArgs e)

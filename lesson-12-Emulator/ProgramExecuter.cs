@@ -38,26 +38,23 @@ namespace Emulator
         private DataStack _stackIP = new DataStack();
 
         public Action<int> OnPcChange {
-            get { return _controller.OnPcChange; }
-            set {
-                _controller.OnPcChange = value;
-            } 
+            set
+            {
+                _controller.OnPcChange += value;
+            }
         }
-        public void AttachPC(Action<int> action)
-        {
-            _controller.OnPcChange = action;
-        }
+        
 
         public void AttachDataStack(Action<int> onPush, Action onPop)
         {
-            _stack.OnPush = onPush;
-            _stack.OnPop = onPop;
+            _stack.OnPush += onPush;
+            _stack.OnPop += onPop;
         }
 
         public void AttachIpStack(Action<int> onPush, Action onPop)
         {
-            _stackIP.OnPush = onPush;
-            _stackIP.OnPop = onPop;
+            _stackIP.OnPush += onPush;
+            _stackIP.OnPop += onPop;
         }
         public ProgramExecuter() { }
 
@@ -74,10 +71,8 @@ namespace Emulator
 
         internal void Load(List<Instruction> opcodes)
         {
-            _instructions = opcodes;
-            _controller.Reset();
-            _stack.Clear();
-            _stackIP.Clear();
+            Reset();
+            _instructions = opcodes;            
         }
 
         private bool NotEnoughParameters(int n) => n > _stack.Count;
@@ -97,6 +92,17 @@ namespace Emulator
             }
 
             return instruction.Execute(_stack, _controller,_stackIP);                                    
+        }
+
+        internal void Reset()
+        {
+            _controller.Reset();
+            _stack.Clear();
+            _stackIP.Clear();
+            if(_instructions != null)
+            {
+                _instructions.Clear();
+            }            
         }
     }
 }

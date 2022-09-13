@@ -12,8 +12,8 @@ namespace Emulator
         private Stack<int> dataStack = new Stack<int>();
         
 
-        public Action<int> OnPush;
-        public Action OnPop;
+        public event Action<int> OnPush;
+        public event Action OnPop;
 
         public DataStack()
         {
