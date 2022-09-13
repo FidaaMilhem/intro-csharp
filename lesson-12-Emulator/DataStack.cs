@@ -46,7 +46,11 @@ namespace Emulator
 
         internal void Clear()
         {
-            dataStack.Clear();
+            int count = dataStack.Count;            
+            for (int i = 0; i < count; i++)
+            {
+                POP();
+            }
         }
     }
 }

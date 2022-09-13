@@ -20,9 +20,9 @@ namespace Emulator
             _executor.AttachIpStack(
                         (data) => listBox_IpStack.Items.Add(data),
                         () => listBox_IpStack.Items.RemoveAt(listBox_IpStack.Items.Count - 1)
-                );
+                    );
             
-            _executor.AttachPC( (pc) => label_PC.Text = $"PC: {pc}" );
+            _executor.OnPcChange = (pc) => label_PC.Text = $"PC: {pc}";
 
             textBox_ProgramCode.Text = DemoPrograms.SimpleWithJumpsIP;
         }
@@ -41,9 +41,6 @@ namespace Emulator
             }
 
             _executor.Load(opcodes);
-
-            label_PC.Text = "PC: 0";
-            listBox_StackViewer.Items.Clear();
         }
 
         

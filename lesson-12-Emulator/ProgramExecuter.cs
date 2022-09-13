@@ -37,6 +37,12 @@ namespace Emulator
         private DataStack _stack = new DataStack();
         private DataStack _stackIP = new DataStack();
 
+        public Action<int> OnPcChange {
+            get { return _controller.OnPcChange; }
+            set {
+                _controller.OnPcChange = value;
+            } 
+        }
         public void AttachPC(Action<int> action)
         {
             _controller.OnPcChange = action;
