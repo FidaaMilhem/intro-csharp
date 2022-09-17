@@ -3,6 +3,7 @@ namespace TestMul
     public class Tests
     {
         Data.Algebra r;
+        
         [SetUp]
         public void Setup()
         {

@@ -52,6 +52,18 @@ namespace Data
             return sign * result;
 
         }
+
+        public int Pow(int a, int b)
+        {
+            if (b == 0) return a;
+            var r = 1;
+            for (int i = 0; i < b; i++)
+            {
+                r = Mul(r, a);
+            }
+            return r;
+        }
+
     }
 }
 
