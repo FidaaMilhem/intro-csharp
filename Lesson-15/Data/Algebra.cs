@@ -25,6 +25,33 @@ namespace Data
             }
             return result;
         }
+
+        public int Mul(int first, int second)
+        {
+            int a, b;
+            if (first < second)
+            {
+                a = first;
+                b = second;
+            }
+            else
+            {
+                a = second;
+                b = first;
+            }
+            var sign = +1;
+            if (a < 0 && b > 0) sign = -1;
+            if (b <0 && a > 0) sign = -1;
+            a = Math.Abs(a);
+            b = Math.Abs(b);
+            int result = 0;
+            for (int i = 0; i < a; i++)
+            {
+                result += b;
+            }
+            return sign * result;
+
+        }
     }
 }
 
