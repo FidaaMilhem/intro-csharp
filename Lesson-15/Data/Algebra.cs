@@ -53,9 +53,9 @@ namespace Data
 
         }
 
-        public int Pow(int a, int b)
+        public double Pow(int a, int b)
         {
-            if (b == 0) return a;
+            if (b == 0) return 1;
             var r = 1;
             for (int i = 0; i < b; i++)
             {
