@@ -55,6 +55,20 @@ namespace TestPow1
 
         }
 
+        [TestMethod]
+        public void TestMixNumberAndPower()
+        {
+            var r = new Data.Algebra();
+            int[] a = { 0, -1,2,-3 };
+            int[] b = { 0, 6,-2,-3 };
+            for (int i = 0; i < a.Length; i++)
+            {
+                double res = r.Pow(a[i], b[i]);
+                Assert.AreEqual(Math.Pow(a[i], b[i]), res);
+            }
+
+        }
+
 
     }
 }
