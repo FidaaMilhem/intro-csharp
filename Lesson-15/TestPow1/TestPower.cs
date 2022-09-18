@@ -41,6 +41,20 @@ namespace TestPow1
 
         }
 
+        [TestMethod]
+        public void TestNegativePower()
+        {
+            var r = new Data.Algebra();
+            int[] a = { 1, 1, 2, 3, 4 };
+            int[] b = { -5, -6, -7, -8, -9 };
+            for (int i = 0; i < a.Length; i++)
+            {
+                var res = r.Pow(a[i], b[i]);
+                Assert.AreEqual(Math.Pow(a[i], b[i]), res);
+            }
+
+        }
+
 
     }
 }
