@@ -56,12 +56,15 @@ namespace Data
         public double Pow(int a, int b)
         {
             if (b == 0) return 1;
+            bool isPositive = true;
+            if (b < 1) isPositive = false;
+            b = Math.Abs(b);
             var r = 1;
             for (int i = 0; i < b; i++)
             {
                 r = Mul(r, a);
             }
-            return r;
+            return isPositive ? r : 1.0/r;
         }
 
     }
