@@ -1,22 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Emulator
 {
     public class Compiler
-    {                       
+    {
+        private List<OpCodeEnum> needArgs = new List<OpCodeEnum>()
+        {
+            OpCodeEnum.PUSH, OpCodeEnum.JMP, OpCodeEnum.JNZ, OpCodeEnum.JZ , OpCodeEnum.PUSHIP, OpCodeEnum.STORE,
+        };
         private Instruction decodeLine(string line)
         {
             string[] parts = line.Split(' ');
             if( parts.Length > 0)
-            {               
+            {
                 var opCodeText = parts[0].Trim().ToUpper();
 
                 var (opCode, argc, lambda) = OpCodeDictionary.Get(opCodeText);
-                if( opCode == OpCodeEnum.PUSH || opCode == OpCodeEnum.JNZ || opCode == OpCodeEnum.JZ || opCode == OpCodeEnum.PUSHIP || opCode == OpCodeEnum.STORE)
+                if( needArgs.Contains(opCode))
                 {
                     if(parts.Length > 1 && int.TryParse(parts[1].Trim(), out var operand))
                     {

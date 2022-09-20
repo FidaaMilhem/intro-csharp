@@ -30,13 +30,13 @@ namespace Emulator
 
             _executor.OnMemoryWritten = (address, data) =>
             {
-                var y = address / 60 * 5;
-                var x = address % 60 * 5;
+                var y = address / 20 * 5;
+                var x = address % 20 * 5;
                 for (int i = 0; i < 5; i++)
                 {
                     for (int j = 0; j < 5; j++)
                     {
-                        memory.SetPixel(x + i, y + j, Color.Red);
+                        memory.SetPixel(x + i, y + j, Color.FromKnownColor((KnownColor) data));
                     }
                 }
                 pictureBox1.Refresh();

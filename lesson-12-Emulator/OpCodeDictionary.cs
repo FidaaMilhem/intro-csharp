@@ -29,6 +29,7 @@ namespace Emulator
         HLT ,
         JZ  ,
         JNZ ,
+        JMP ,
 
         STORE,
     }
@@ -38,7 +39,7 @@ namespace Emulator
     {
         private static Dictionary<string, (OpCodeEnum, int, Func<DataStack, Controller, int,DataStack, Memory, bool>)> OpCodeMap = new Dictionary<string, (OpCodeEnum, int, Func<DataStack, Controller, int,DataStack, Memory, bool>)>()
         {
-            //Name       OpCode        args            
+            //Name       OpCode        stack args            
             { "NOP",  (OpCodeEnum.NOP,  0, (s,c,arg,s2 , m) => { ++c.PC;  return true; } ) },
             { "PUSH", (OpCodeEnum.PUSH, 0, (s,c,arg,s2 , m) => { ++c.PC; s.PUSH(arg); return true; } ) },
             { "PUSHIP", (OpCodeEnum.PUSHIP, 0, (s,c,arg,s2 , m) => { ++c.PC; s2.PUSH(arg); return true; } ) },//ok
@@ -59,6 +60,7 @@ namespace Emulator
             { "SWAP", (OpCodeEnum.SWAP, 2, (s,c,arg,s2 , m) => { ++c.PC; var (a, b) = (s.POP(), s.POP()); s.PUSH(a); s.PUSH(b); return true; } ) },
             { "ROL3", (OpCodeEnum.ROL3, 3, (s,c,arg,s2 , m) => { ++c.PC; return true; } ) },
             { "HLT",  (OpCodeEnum.HLT , 0, (s,c,arg,s2 , m) => { return false; } ) },
+            { "JMP",  (OpCodeEnum.JMP , 0, (s,c,arg,s2 , m) => { c.PC =  arg;  return true; }) },
             { "JZ",   (OpCodeEnum.JZ  , 1, (s,c,arg,s2 , m) => {
                                                         if( s.POP() == 0)
                                                         {
