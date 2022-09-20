@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace Emulator
@@ -106,6 +107,33 @@ namespace Emulator
         private void listBox_IpStack_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void textBox_ProgramCode_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.Title = "Load programs";
+            openFileDialog1.InitialDirectory = "m:/train";
+            openFileDialog1.ShowDialog(this);
+            
+            var f = openFileDialog1.OpenFile();
+            var sr = new StreamReader(f);
+            var l = sr.ReadLine();
+            textBox_ProgramCode.Text += l;
+            textBox_ProgramCode.Text += '\n';
+            textBox_ProgramCode.Text += sr.ReadLine();
+                
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            saveFileDialog1.ShowDialog();
+            
         }
     }
 }

@@ -43,6 +43,10 @@
             this.listBox_IpStack = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.button1 = new System.Windows.Forms.Button();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,11 +60,12 @@
             this.textBox_ProgramCode.Size = new System.Drawing.Size(158, 455);
             this.textBox_ProgramCode.TabIndex = 0;
             this.textBox_ProgramCode.Text = "PUSH 0\r\nPUSH 1\r\nDUP\r\nINC\r\nDUP\r\nPUSH 10\r\nSUB\r\nJNZ 2\r\n";
+            this.textBox_ProgramCode.TextChanged += new System.EventHandler(this.textBox_ProgramCode_TextChanged);
             // 
             // label_ProgEditor
             // 
             this.label_ProgEditor.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.label_ProgEditor.Location = new System.Drawing.Point(41, 20);
+            this.label_ProgEditor.Location = new System.Drawing.Point(35, 9);
             this.label_ProgEditor.Name = "label_ProgEditor";
             this.label_ProgEditor.Size = new System.Drawing.Size(155, 26);
             this.label_ProgEditor.TabIndex = 1;
@@ -198,11 +203,38 @@
             this.pictureBox1.TabIndex = 8;
             this.pictureBox1.TabStop = false;
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            this.openFileDialog1.Filter = "Text File|*.txt";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(46, 611);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(150, 23);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "Open File";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(224, 611);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(150, 23);
+            this.button3.TabIndex = 11;
+            this.button3.Text = "Save";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // Form_MachineEmulator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1139, 617);
+            this.ClientSize = new System.Drawing.Size(1139, 673);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.listBox_IpStack);
@@ -243,6 +275,10 @@
         private System.Windows.Forms.ListBox listBox_IpStack;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.Button button3;
     }
 }
 
