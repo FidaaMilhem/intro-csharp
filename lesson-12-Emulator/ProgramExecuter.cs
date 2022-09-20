@@ -36,6 +36,7 @@ namespace Emulator
         private List<Instruction> _instructions;
         private DataStack _stack = new DataStack();
         private DataStack _stackIP = new DataStack();
+        private Memory _memory = new Memory(4*1024);
 
         public Action<int> OnPcChange {
             set
@@ -43,7 +44,14 @@ namespace Emulator
                 _controller.OnPcChange += value;
             }
         }
-        
+
+        public Action<int, int> OnMemoryWritten
+        {
+            set
+            {
+                _memory.OnWrite += value;
+            }
+        }
 
         public void AttachDataStack(Action<int> onPush, Action onPop)
         {
@@ -91,7 +99,7 @@ namespace Emulator
                 return false;
             }
 
-            return instruction.Execute(_stack, _controller,_stackIP);                                    
+            return instruction.Execute(_stack, _controller,_stackIP, _memory);                                    
         }
 
         internal void Reset()

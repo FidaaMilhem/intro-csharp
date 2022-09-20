@@ -16,7 +16,7 @@ namespace Emulator
                 var opCodeText = parts[0].Trim().ToUpper();
 
                 var (opCode, argc, lambda) = OpCodeDictionary.Get(opCodeText);
-                if( opCode == OpCodeEnum.PUSH || opCode == OpCodeEnum.JNZ || opCode == OpCodeEnum.JZ || opCode == OpCodeEnum.PUSHIP)
+                if( opCode == OpCodeEnum.PUSH || opCode == OpCodeEnum.JNZ || opCode == OpCodeEnum.JZ || opCode == OpCodeEnum.PUSHIP || opCode == OpCodeEnum.STORE)
                 {
                     if(parts.Length > 1 && int.TryParse(parts[1].Trim(), out var operand))
                     {

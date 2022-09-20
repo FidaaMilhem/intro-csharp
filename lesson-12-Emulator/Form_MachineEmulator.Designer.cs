@@ -42,6 +42,8 @@
             this.label_PC = new System.Windows.Forms.Label();
             this.listBox_IpStack = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // textBox_ProgramCode
@@ -114,7 +116,7 @@
             this.btn_Build.TabIndex = 3;
             this.btn_Build.Text = "Build";
             this.btn_Build.UseVisualStyleBackColor = true;
-            this.btn_Build.Click += this.BuildCode_Click;
+            this.btn_Build.Click += new System.EventHandler(this.BuildCode_Click);
             // 
             // btn_ExecuteStep
             // 
@@ -140,7 +142,7 @@
             // 
             this.textBox_ExecutingMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.textBox_ExecutingMessage.ForeColor = System.Drawing.Color.Red;
-            this.textBox_ExecutingMessage.Location = new System.Drawing.Point(684, 483);
+            this.textBox_ExecutingMessage.Location = new System.Drawing.Point(649, 144);
             this.textBox_ExecutingMessage.Name = "textBox_ExecutingMessage";
             this.textBox_ExecutingMessage.Size = new System.Drawing.Size(161, 23);
             this.textBox_ExecutingMessage.TabIndex = 4;
@@ -171,27 +173,36 @@
             this.listBox_IpStack.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.listBox_IpStack.FormattingEnabled = true;
             this.listBox_IpStack.ItemHeight = 20;
-            this.listBox_IpStack.Location = new System.Drawing.Point(895, 58);
+            this.listBox_IpStack.Location = new System.Drawing.Point(649, 260);
             this.listBox_IpStack.Name = "listBox_IpStack";
-            this.listBox_IpStack.Size = new System.Drawing.Size(159, 484);
+            this.listBox_IpStack.Size = new System.Drawing.Size(159, 284);
             this.listBox_IpStack.TabIndex = 6;
             this.listBox_IpStack.SelectedIndexChanged += new System.EventHandler(this.listBox_IpStack_SelectedIndexChanged);
             // 
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.label1.Location = new System.Drawing.Point(876, 20);
+            this.label1.Location = new System.Drawing.Point(646, 222);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(155, 26);
             this.label1.TabIndex = 7;
             this.label1.Text = "Stack Ip Display";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(851, 241);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(259, 278);
+            this.pictureBox1.TabIndex = 8;
+            this.pictureBox1.TabStop = false;
+            // 
             // Form_MachineEmulator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1139, 617);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.listBox_IpStack);
             this.Controls.Add(this.label_PC);
@@ -208,6 +219,7 @@
             this.Controls.Add(this.textBox_ProgramCode);
             this.Name = "Form_MachineEmulator";
             this.Text = "Machine Emulator";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -229,6 +241,7 @@
         private System.Windows.Forms.Label label_PC;
         private System.Windows.Forms.ListBox listBox_IpStack;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

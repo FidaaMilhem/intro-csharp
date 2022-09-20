@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Emulator
@@ -10,6 +11,9 @@ namespace Emulator
         public Form_MachineEmulator()
         {
             InitializeComponent();
+            var memory = new Bitmap(300, 300);
+            pictureBox1.Image = memory;
+
             _executor = new ProgramExecuter();
             _executor.AttachDataStack(
                         (data) => listBox_StackViewer.Items.Add(data),
@@ -23,6 +27,20 @@ namespace Emulator
                     );
             
             _executor.OnPcChange = (pc) => label_PC.Text = $"PC: {pc}";
+
+            _executor.OnMemoryWritten = (address, data) =>
+            {
+                var y = address / 60 * 5;
+                var x = address % 60 * 5;
+                for (int i = 0; i < 5; i++)
+                {
+                    for (int j = 0; j < 5; j++)
+                    {
+                        memory.SetPixel(x + i, y + j, Color.Red);
+                    }
+                }
+                pictureBox1.Refresh();
+            };
 
             textBox_ProgramCode.Text = DemoPrograms.SimpleWithJumpsIP;
         }

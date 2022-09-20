@@ -12,13 +12,13 @@ namespace Emulator
         public int _operand; //  because what to do if not operand???
         public int _argc;
 
-        private Func<DataStack, Controller, int,DataStack, bool> _execute;
-        public Instruction(OpCodeEnum opCode, int operand, int argc, Func<DataStack, Controller, int,DataStack, bool> execute)
+        private Func<DataStack, Controller, int,DataStack, Memory, bool> _execute;
+        public Instruction(OpCodeEnum opCode, int operand, int argc, Func<DataStack, Controller, int,DataStack, Memory,  bool> execute)
         {
             _opCode = opCode;
             _operand = operand;
             _argc = argc;
-            _execute = execute;
+            _execute = execute;            
         }
 
         public override string ToString()
@@ -27,9 +27,9 @@ namespace Emulator
             return $"{_opCode}{operand}";
         }
 
-        public bool Execute(DataStack stack, Controller controller,DataStack stackIP)
+        public bool Execute(DataStack stack, Controller controller,DataStack stackIP, Memory mem)
         {
-            return _execute(stack, controller, _operand, stackIP);
+            return _execute(stack, controller, _operand, stackIP, mem);
         }
 
          
