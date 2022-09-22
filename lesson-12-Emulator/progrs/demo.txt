@@ -1,0 +1,11 @@
+push 9
+push 10
+dup
+inc
+puship 1
+dup
+push 10
+sub
+jz 9
+popip
+hlt

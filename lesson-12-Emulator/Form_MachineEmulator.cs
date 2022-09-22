@@ -172,7 +172,11 @@ namespace Emulator
         private void button3_Click(object sender, EventArgs e)
         {
             saveFileDialog1.ShowDialog();
-
+            var f = saveFileDialog1.OpenFile();
+            using (var s = new StreamWriter(f))
+            {
+                s.Write(textBox_ProgramCode.Text);
+            }
         }
     }
 }
