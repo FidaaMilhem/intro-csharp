@@ -107,7 +107,7 @@ namespace Emulator
             _controller.Reset();
             _stack.Clear();
             _stackIP.Clear();
-            if(_instructions != null)
+            if (_instructions != null)
             {
                 _instructions.Clear();
             }            

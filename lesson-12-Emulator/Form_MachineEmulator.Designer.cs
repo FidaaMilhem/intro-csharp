@@ -59,7 +59,7 @@
             this.textBox_ProgramCode.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBox_ProgramCode.Size = new System.Drawing.Size(158, 455);
             this.textBox_ProgramCode.TabIndex = 0;
-            this.textBox_ProgramCode.Text = "PUSH 0\r\nPUSH 1\r\nDUP\r\nINC\r\nDUP\r\nPUSH 10\r\nSUB\r\nJNZ 2\r\n";
+            this.textBox_ProgramCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBox_ProgramCode.TextChanged += new System.EventHandler(this.textBox_ProgramCode_TextChanged);
             // 
             // label_ProgEditor

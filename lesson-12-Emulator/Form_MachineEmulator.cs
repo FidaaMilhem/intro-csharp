@@ -119,21 +119,55 @@ namespace Emulator
             openFileDialog1.Title = "Load programs";
             openFileDialog1.InitialDirectory = "m:/train";
             openFileDialog1.ShowDialog(this);
-            
+
+            //var f = openFileDialog1.OpenFile();
+            //var sr = new StreamReader(f);
+            ////var l = sr.ReadLine();
+            //int i=0;
+            //for (var l = sr.ReadLine(); l !=  null ; l = sr.ReadLine())
+            //{
+            //    textBox_ProgramCode.Text += l;
+            //    textBox_ProgramCode.Text += '\n';
+            //    textBox_ProgramCode.Text += sr.ReadLine();
+            //    i++;
+            //}
+
             var f = openFileDialog1.OpenFile();
             var sr = new StreamReader(f);
-            var l = sr.ReadLine();
-            textBox_ProgramCode.Text += l;
-            textBox_ProgramCode.Text += '\n';
-            textBox_ProgramCode.Text += sr.ReadLine();
-                
+            int i = 0;
+            string line;
+            string m = "\n";
+            do
+            {
+                line = sr.ReadLine();
+                if (line == null) break;
+                textBox_ProgramCode.Text += line;
+                textBox_ProgramCode.Text += m;
+                textBox_ProgramCode.Text += sr.ReadLine();
+                Console.WriteLine($"{i++} : {line}");
+            }while (line != null);
+            
+            sr.Close();
+
+
+            //using var sr = new StreamReader("../../../progrs/textFile1.txt"));
+            ////int i = 1;
+            //for (; ; )
+            //{
+            //    var l = sr.ReadLine();
+            //    if (l == null) break;
+            //    textBox_ProgramCode.Text += '\n';
+            //    textBox_ProgramCode.Text += sr.ReadLine();
+
+            //}
+
 
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             saveFileDialog1.ShowDialog();
-            
+
         }
     }
 }

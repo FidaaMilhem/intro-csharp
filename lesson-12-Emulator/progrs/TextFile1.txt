@@ -1,0 +1,15 @@
+﻿PUSH 0
+
+PUSH 1
+
+DUP
+
+INC
+
+dup
+
+push10
+
+sub
+
+jnz 2 

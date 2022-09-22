@@ -1,0 +1,10 @@
+﻿push 8
+
+inc 
+
+dup 
+
+store 141 
+
+jmp 1
+
