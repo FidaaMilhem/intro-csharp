@@ -59,7 +59,6 @@
             this.textBox_ProgramCode.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBox_ProgramCode.Size = new System.Drawing.Size(158, 455);
             this.textBox_ProgramCode.TabIndex = 0;
-            this.textBox_ProgramCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBox_ProgramCode.TextChanged += new System.EventHandler(this.textBox_ProgramCode_TextChanged);
             // 
             // label_ProgEditor

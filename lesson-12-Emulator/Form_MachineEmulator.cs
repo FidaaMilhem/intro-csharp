@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.IO;
+using System.Text;
 using System.Windows.Forms;
 
 namespace Emulator
@@ -133,21 +134,8 @@ namespace Emulator
             //}
 
             var f = openFileDialog1.OpenFile();
-            var sr = new StreamReader(f);
-            int i = 0;
-            string line;
-            string m = "\n";
-            do
-            {
-                line = sr.ReadLine();
-                if (line == null) break;
-                textBox_ProgramCode.Text += line;
-                textBox_ProgramCode.Text += m;
-                textBox_ProgramCode.Text += sr.ReadLine();
-                Console.WriteLine($"{i++} : {line}");
-            }while (line != null);
-            
-            sr.Close();
+            var code = readFile(f);
+            textBox_ProgramCode.Text = code;
 
 
             //using var sr = new StreamReader("../../../progrs/textFile1.txt"));
@@ -162,6 +150,23 @@ namespace Emulator
             //}
 
 
+        }
+
+        private string readFile(Stream f)
+        {
+            var sb = new StringBuilder();
+            using (var sr = new StreamReader(f))
+            {
+                string line;
+                do
+                {
+                    line = sr.ReadLine();
+                    if (line == null)
+                        break;
+                    sb.AppendLine(line);
+                } while (true);
+            }
+            return sb.ToString();
         }
 
         private void button3_Click(object sender, EventArgs e)
