@@ -58,11 +58,31 @@ namespace Calculator
         //    }
         //    return r;
         //}
-        Func<int, int, int> addOp = (a, b) => a + b;
+        //Func<int, int, int> addOp = (a, b) => a + b;
         private void OnAddOperation(object sender, EventArgs e)
         {
-            ExecuteOperation((a,b) => a + b);
-            //ExecuteOperation(add);
+            //ExecuteOperation((a,b) => a + b);
+            ////ExecuteOperation(add);
+
+
+            Algebra alg = new Algebra();
+            var args = listBox1.Items;
+            if (args.Count > 1)
+            {
+                var last = args.Count - 1;
+                string lastNumber = args[last].ToString();
+                string beforeLastNumber = args[last - 1].ToString();
+                string result = alg.AddByString(beforeLastNumber, lastNumber);
+
+                args.RemoveAt(last);
+                args.RemoveAt(last - 1);
+                if (int.TryParse(result, out int r))
+                {
+                    args.Add(r);
+                }
+                else
+                    lblError.Text = result;
+            }
         }
         
         private void OnSubtractOperation(object sender, EventArgs e)
@@ -143,7 +163,10 @@ namespace Calculator
             listBox1.Items.Clear();
         }
 
-        
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }
