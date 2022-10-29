@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32922.545
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SqlLite", "SqlLite\SqlLite.csproj", "{D8AB45FE-9D3F-44B2-B889-D4B089D8C6C1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EF6Framework", "EF6Framework\EF6Framework.csproj", "{10595DAC-FB83-4C9B-BE8F-C4450A7D4383}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D8AB45FE-9D3F-44B2-B889-D4B089D8C6C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8AB45FE-9D3F-44B2-B889-D4B089D8C6C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8AB45FE-9D3F-44B2-B889-D4B089D8C6C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8AB45FE-9D3F-44B2-B889-D4B089D8C6C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10595DAC-FB83-4C9B-BE8F-C4450A7D4383}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10595DAC-FB83-4C9B-BE8F-C4450A7D4383}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10595DAC-FB83-4C9B-BE8F-C4450A7D4383}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10595DAC-FB83-4C9B-BE8F-C4450A7D4383}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {99B3D5D7-455C-4494-A4A1-F9F00C3FAEC1}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,91 @@
+﻿@page "/album-search"
+
+@using BlazorWeb.Shared
+@inject HttpClient Http
+
+<h3>AlbumsForArtist</h3>
+
+<span>Artits name</span>
+
+<EditForm Model="@Name" OnSubmit="@HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <InputText id="name" @bind-Value="Name" />
+
+    <button class="btn btn-success"  type="submit">Search</button>
+</EditForm>
+
+<h2 style="color:mediumslateblue;font-style:italic;">Artist:</h2>
+
+<TableComponent Items="artists" Context="artist">
+    <TableHeader>
+        <th>Artist</th>       
+    </TableHeader>
+    <RowTemplate>
+        <td>@artist.Name</td>
+        <td>@artist.Id</td>
+        <td><button class="btn btn-success" value="artist.Id" @onclick="() => FetchAlbums(artist.Id)">Albums</button></td>
+    </RowTemplate>
+</TableComponent>
+
+<h3 style="color:mediumslateblue;font-style:italic;">Albums:</h3>
+<TableComponent Items="albums" Context="album">
+    <TableHeader>
+        <th>Album Title</th>       
+    </TableHeader>
+    <RowTemplate>
+        <td>@album.title</td>
+        <td><button class="btn btn-success"  @onclick="() => FetchTracks(album.id)">Track</button></td>
+    </RowTemplate>
+</TableComponent>
+
+
+<h4 style="color:mediumslateblue;font-style:italic;">Tracks:</h4>
+<TableComponent Items="tracks" Context="track">
+    <TableHeader>
+        <th>Track Name</th>
+    </TableHeader>
+    <RowTemplate>
+        <td>@track.Name</td>
+    </RowTemplate>
+</TableComponent>
+
+@code {
+
+    String Name = "";
+    List<SearchResponse> artists = new List<SearchResponse>();
+    List<AlbumRespopnse> albums = new List<AlbumRespopnse>();
+    List<TrackResponse> tracks = new List<TrackResponse>();
+    //string names = Model.
+    //protected override async Task OnInitializedAsync()
+    //{
+    //    albums = await Http.GetFromJsonAsync<List<string>>($"api/Albums/{Name}");
+    //}
+
+    private async void HandleValidSubmit()
+    {
+        albums.Clear();
+        artists.Clear();
+        tracks.Clear();
+        this.StateHasChanged();
+        artists = await Http.GetFromJsonAsync<List<SearchResponse>>($"api/Search/{Name}");
+            //albums = await Http.GetFromJsonAsync<List<string>>($"api/Albums/{Name}");
+        this.StateHasChanged();
+    }
+
+    private async void FetchAlbums(int artistId)
+    {
+        albums = await Http.GetFromJsonAsync<List<AlbumRespopnse>>($"api/Albums/{artistId}");
+        tracks.Clear();
+        this.StateHasChanged();
+    }
+
+    private async void FetchTracks(int albumId)
+    {
+        tracks = await Http.GetFromJsonAsync<List<TrackResponse>>($"api/Track/{albumId}");
+        this.StateHasChanged();
+    }
+    
+}
+

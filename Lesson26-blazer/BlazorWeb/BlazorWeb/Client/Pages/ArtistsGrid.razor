@@ -1,0 +1,27 @@
+@page "/artist-short"
+
+@using BlazorWeb.Shared
+@inject HttpClient Http
+
+<h3>Artist with short name</h3>
+
+<TableComponent Items="artists" Context="artist">
+    <TableHeader>
+        <th>Artist</th>
+        <th>Number of Albums</th>
+    </TableHeader>
+    <RowTemplate>
+        <td>@artist.Name</td>
+        <td>@artist.Albums</td>
+    </RowTemplate>
+</TableComponent>
+
+
+@code {
+    ArtistResponse[] artists;
+    protected override async Task OnInitializedAsync()
+    {
+        artists = await Http.GetFromJsonAsync<ArtistResponse[]>("Artists");
+    }
+}
+

@@ -1,0 +1,22 @@
+﻿@page "/initialize"
+@using MachineControlViewer.Shared
+
+@inject HttpClient Http
+<h3>initialize</h3>
+
+    <table>
+        <td></td>
+        <td><button class="btn btn-success"  @onclick="() => InitializeDb()">InitDB</button></td>
+    </table>
+
+
+
+@code {
+    private async void InitializeDb()
+    {
+        bool albums = await Http.GetFromJsonAsync<bool>($"api/BootStrap/{true}");
+
+        this.StateHasChanged();
+    }
+
+}
